@@ -1,20 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-
+import Layout from "../components/common/Layout";
 const Signup = () => {
   return (
-    <Container>
-      <Wrap>
-        <span>로고</span>
-        <ButtonBox>
-          <input placeholder="아이디"></input>
-          <button>중복 확인 버튼</button>
-          <input placeholder="비밀번호"></input>
-          <input placeholder="비밀번호 확인"></input>
-          <button>가입하기</button>
-        </ButtonBox>
-      </Wrap>
-    </Container>
+    <Layout>
+      <Container>
+        <Wrap>
+          <span>회원가입</span>
+          <ButtonBox>
+            <input placeholder="아이디"></input>
+            <button>중복 확인 버튼</button>
+            <input placeholder="비밀번호"></input>
+            <input placeholder="비밀번호 확인"></input>
+            <button>가입하기</button>
+          </ButtonBox>
+        </Wrap>
+      </Container>
+    </Layout>
   );
 };
 

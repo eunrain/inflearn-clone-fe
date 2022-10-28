@@ -34,7 +34,7 @@ const Wrap = styled.div`
   height: 550px;
   img {
     display: block;
-    margin: 30px auto;
+    margin: auto;
   }
 `;
 
