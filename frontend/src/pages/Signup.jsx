@@ -38,7 +38,7 @@ const Wrap = styled.div`
     text-align: center;
     margin-top: 50px;
     font-weight: bold;
-    font-size: 23px;
+    font-size: 22px;
   }
 `;
 
