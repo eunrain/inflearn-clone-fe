@@ -42,7 +42,7 @@ const StBtnlogin = styled.button`
 const StBtnsignup = styled.button`
   width: 100px;
   height: 50px;
-  background-color: tomato;
+  background-color: #ff7867;
   border: 1px solid lightgray;
   border-radius: 8px;
   color: white;

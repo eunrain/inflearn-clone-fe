@@ -29,7 +29,6 @@ const Signup = () => {
     //.oneOf([yup.ref("password"), null], "비밀번호가 일치하지 않습니다."),
   });
 
-  //useForm()에 필요한 register, handleSubmit,errors를 할당해준다.
   const {
     register, //제어되지 않은 컴포넌트를 Hook과 연결하여 값이 검사될 수 있도록 하고, 폼이 제출될 때 한번에 모아지도록 하는 것(input값 쉽게 관리)
     handleSubmit, //기존에 폼을 제출할 때 나타나는 새로고침 현상이 나타나지 않는다. event.preventDefault() 안써줘도 됌
@@ -46,28 +45,48 @@ const Signup = () => {
       <Container>
         <Wrap>
           <span>회원가입</span>
-          <ButtonBox>
+          <StForm>
             <form onSubmit={handleSubmit(onSignupHandler)}>
-              <input type="id" placeholder="아이디" {...register("id")} />
-              <span>{errors.id && <p>{errors.id.message}</p>}</span>
-              <button>중복 확인 버튼</button>
-              <input
-                type="password"
-                placeholder="비밀번호"
-                {...register("password")}
-              />
-              <span>{errors.password && <p>{errors.password.message}</p>}</span>
-              <input
-                type="passwordCheck"
-                placeholder="비밀번호 확인"
-                {...register("passwordCheck")}
-              />
-              <span>
-                {errors.passwordCheck && <p>{errors.passwordCheck.message}</p>}
-              </span>
-              <button type="submit">가입하기</button>
+              <div>
+                <StId>
+                  <p>아이디</p>
+                  <StBtnCheck>중복 확인</StBtnCheck>
+                </StId>
+                <input type="id" placeholder="id" {...register("id")} />
+                <StErrMsg>{errors.id && <p>{errors.id.message}</p>}</StErrMsg>
+              </div>
+
+              <div>
+                <div>
+                  <p>비밀번호</p>
+                  <input
+                    type="password"
+                    placeholder="*****"
+                    {...register("password")}
+                  />
+                  <StErrMsg>
+                    {errors.password && <p>{errors.password.message}</p>}
+                  </StErrMsg>
+                </div>
+
+                <div>
+                  <p>비밀번호 확인</p>
+                  <input
+                    type="passwordCheck"
+                    placeholder="*****"
+                    {...register("passwordCheck")}
+                  />
+                  <StErrMsg>
+                    {errors.passwordCheck && (
+                      <p>{errors.passwordCheck.message}</p>
+                    )}
+                  </StErrMsg>
+                </div>
+              </div>
+
+              <StBtnSignup type="submit">가입하기</StBtnSignup>
             </form>
-          </ButtonBox>
+          </StForm>
         </Wrap>
       </Container>
     </Layout>
@@ -85,47 +104,56 @@ const Container = styled.div`
 `;
 
 const Wrap = styled.div`
-  background-color: skyblue;
-  border-radius: 15px;
-  width: 400px;
-  height: 550px;
+  width: 500px;
+  height: 650px;
   span {
     display: block;
     text-align: center;
     margin-top: 50px;
-    font-weight: bold;
-    font-size: 23px;
+    margin-bottom: 30px;
+    font-weight: border;
+    font-size: 34px;
   }
 `;
 
-const ButtonBox = styled.div`
-  margin-top: 70px;
+const StForm = styled.div`
+  display: flex;
+  justify-content: center;
+
   input {
-    display: block;
-    width: 250px;
-    height: 30px;
-    border: 2px solid #11a5c2;
-    border-radius: 10px;
-    margin: 30px auto;
-  }
-
-  button {
-    display: block;
-    width: 250px;
-    height: 35px;
-    border-radius: 10px;
-    margin: 0 auto;
-    cursor: pointer;
-    background-color: #d8d8ee;
-    border: none;
-  }
-  button:hover {
-    opacity: 0.7;
+    width: 380px;
+    height: 55px;
+    margin-top: -7px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid lightgray;
   }
 `;
 
-// const StForm = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   margin-top: 15px;
-// `;
+const StId = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const StBtnCheck = styled.button`
+  width: 90px;
+  height: 35px;
+  border-radius: 4px;
+  border: 1px solid lightgray;
+`;
+
+const StBtnSignup = styled.button`
+  width: 380px;
+  height: 55px;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  font-size: 19px;
+  margin-top: 50px;
+  background-color: #00c471;
+`;
+
+const StErrMsg = styled.div`
+  color: red;
+  margin-top: -4px;
+`;
