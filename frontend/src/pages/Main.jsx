@@ -1,7 +1,8 @@
 import React from "react";
+import Layout from "../components/common/Layout";
 
 const Main = () => {
-  return <div>hello</div>;
+  return <Layout></Layout>;
 };
 
 export default Main;
