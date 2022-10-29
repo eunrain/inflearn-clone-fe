@@ -4,6 +4,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styled from "styled-components";
 import Layout from "../components/common/Layout";
+import { useDispatch } from "react-redux";
+import { __idDupCheck, __signUp } from "../redux/modules/ signupSlice";
+import { useState } from "react";
 
 const Signup = () => {
   const schema = yup.object().shape({
@@ -38,7 +41,23 @@ const Signup = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSignupHandler = (data) => console.log(data);
+  //회원가입
+  const dispatch = useDispatch();
+  const onSignupHandler = (data) => {
+    const signupBody = {
+      loginId: data.id,
+      password: data.password,
+    };
+    dispatch(__signUp(signupBody));
+    console.log(JSON.stringify(signupBody));
+  };
+
+  //id 중복확인
+  const [id, setId] = useState();
+  const onChange = (e) => {
+    setId(e.target.value);
+  };
+  console.log(id);
 
   return (
     <Layout>
@@ -50,9 +69,16 @@ const Signup = () => {
               <div>
                 <StId>
                   <p>아이디</p>
-                  <StBtnCheck>중복 확인</StBtnCheck>
+                  <StBtnCheck onClick={() => dispatch(__idDupCheck(id))}>
+                    중복 확인
+                  </StBtnCheck>
                 </StId>
-                <input type="id" placeholder="id" {...register("id")} />
+                <input
+                  type="id"
+                  placeholder="id"
+                  onChange={onChange}
+                  {...register("id")}
+                />
                 <StErrMsg>{errors.id && <p>{errors.id.message}</p>}</StErrMsg>
               </div>
 
@@ -151,6 +177,7 @@ const StBtnSignup = styled.button`
   font-size: 19px;
   margin-top: 50px;
   background-color: #00c471;
+  cursor: pointer;
 `;
 
 const StErrMsg = styled.div`
