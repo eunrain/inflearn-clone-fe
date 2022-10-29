@@ -1,8 +1,13 @@
 import React from "react";
 import Layout from "../components/common/Layout";
+import Sidebar from "../components/Sidebar";
 
 const Main = () => {
-  return <Layout></Layout>;
+  return (
+    <Layout>
+      <Sidebar />
+    </Layout>
+  );
 };
 
 export default Main;
