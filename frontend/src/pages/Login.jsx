@@ -4,6 +4,7 @@ import styled from "styled-components";
 import img from "../img/logo.png";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import Modal from "../components/common/Modal";
 
 const Login = () => {
   const schema = yup.object().shape({
@@ -26,6 +27,7 @@ const Login = () => {
     <Container>
       <Wrap>
         <img src={img} />
+        <span>로그인</span>
         <InputBox>
           <form onSubmit={handleSubmit(submitForm)}>
             <div>
@@ -44,6 +46,7 @@ const Login = () => {
           </form>
         </InputBox>
       </Wrap>
+      <Modal></Modal>
     </Container>
   );
 };
@@ -59,46 +62,51 @@ const Container = styled.div`
 `;
 
 const Wrap = styled.div`
-  background-color: skyblue;
+  border: 2px solid #d8d8ee;
   border-radius: 15px;
-  width: 400px;
-  height: 550px;
+  width: 500px;
+  height: 650px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 450;
   img {
     display: block;
-    margin: auto;
+    margin: 50px auto;
   }
 `;
 
 const InputBox = styled.div`
-  margin-top: 80px;
+  margin-top: 70px;
   text-align: center;
   div {
     height: 50px;
     margin: 50px;
   }
   input {
-    display: block;
-    width: 250px;
-    height: 30px;
-    border: 2px solid #11a5c2;
-    border-radius: 10px;
-    margin: 0px auto;
+    width: 380px;
+    height: 55px;
+    margin-top: -7px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid lightgray;
   }
   button {
     display: block;
-    width: 250px;
-    height: 35px;
-    border-radius: 10px;
+    width: 380px;
+    height: 55px;
     margin: 50px auto;
     cursor: pointer;
-    background-color: #d8d8ee;
-    border: none;
+    border-radius: 4px;
+    border: 1px solid lightgray;
+    background-color: #00c471;
+    color: white;
   }
   button:hover {
-    opacity: 0.7;
+    opacity: 0.8;
   }
 
   span {
+    display: block;
     color: #d23f3f;
     font-size: 13px;
   }

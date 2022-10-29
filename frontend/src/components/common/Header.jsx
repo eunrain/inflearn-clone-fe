@@ -1,12 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import logo from "../../img/logo.png";
+import { useState } from "react";
+import Modal from "../common/Modal";
+
 const Header = () => {
+  const [modal, setModal] = useState(false);
+  const openModal = () => {
+    setModal(true);
+  };
+  const closeModal = () => {
+    setModal(false);
+  };
   return (
     <StHeader>
       <StLogo src={logo} />
       <StBtnWrap>
-        <StBtnlogin>로그인</StBtnlogin>
+        <StBtnlogin onClick={() => setModal(true)}>로그인</StBtnlogin>
+        {modal ? <Modal modal={modal} closemodal={closeModal} /> : null}
+        {/* {modal === true ? <Modal modal={modal} /> : null} */}
         <StBtnsignup>회원가입</StBtnsignup>
       </StBtnWrap>
     </StHeader>
