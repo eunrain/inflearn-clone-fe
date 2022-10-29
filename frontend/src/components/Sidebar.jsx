@@ -40,7 +40,6 @@ const Sidebar = () => {
 export default Sidebar;
 
 const StContainer = styled.div`
-  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: start;
@@ -48,7 +47,7 @@ const StContainer = styled.div`
 `;
 
 const StWrap = styled.div`
-  width: 240px;
+  width: 150px;
   height: 300px;
   border: 1px solid #e4e4e4;
   background-color: #fafafa;

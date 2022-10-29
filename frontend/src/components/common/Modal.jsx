@@ -63,6 +63,7 @@ const ModalBackground = styled.div`
   width: 100%;
   height: 100%;
   backdrop-filter: blur(3px);
+  background-color: rgba(0, 0, 0, 0.8);
 `;
 
 const ModalBox = styled.div`
@@ -72,7 +73,6 @@ const ModalBox = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
-  border: 1px solid black;
   border-radius: 15px;
   background-color: white;
   img {
