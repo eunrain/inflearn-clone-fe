@@ -1,16 +1,30 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useState } from "react";
+import Modal from "../common/Modal";
 import logo from "../../img/logologo.png";
 
 const Header = () => {
+  const [modal, setModal] = useState(false);
+  const openModal = () => {
+    setModal(true);
+  };
+  const closeModal = () => {
+    setModal(false);
+  };
+
+const Header = () => {
   const navigate = useNavigate();
+
 
   return (
     <StHeader>
       <StLogo src={logo} onClick={() => navigate("/")} />
       <StBtnWrap>
-        <StBtnlogin>로그인</StBtnlogin>
+        <StBtnlogin onClick={() => setModal(true)}>로그인</StBtnlogin>
+        {modal ? <Modal modal={modal} closemodal={closeModal} /> : null}
+        {/* {modal === true ? <Modal modal={modal} /> : null} */}
         <StBtnsignup>회원가입</StBtnsignup>
       </StBtnWrap>
     </StHeader>
