@@ -102,8 +102,8 @@ const PostBox = styled.div`
   div {
     margin-top: 50px;
     width: 20%;
-    height: 300px;
-    border: 2px solid black;
+    height: 250px;
+    border: 1px solid black;
   }
 `;
 const Inquiry = styled.div`

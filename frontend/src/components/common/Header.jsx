@@ -1,17 +1,21 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
 import Modal from "../common/Modal";
 import logo from "../../img/logologo.png";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [modal, setModal] = useState(false);
   const openModal = () => {
     setModal(true);
   };
   const closeModal = () => {
     setModal(false);
+  };
+  const signUpHandler = () => {
+    navigate(`/signup`);
   };
 
   return (
@@ -21,7 +25,7 @@ const Header = () => {
         <StBtnlogin onClick={() => setModal(true)}>로그인</StBtnlogin>
         {modal ? <Modal modal={modal} closemodal={closeModal} /> : null}
 
-        <StBtnsignup>회원가입</StBtnsignup>
+        <StBtnsignup onClick={signUpHandler}>회원가입</StBtnsignup>
       </StBtnWrap>
     </StHeader>
   );
