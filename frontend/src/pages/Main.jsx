@@ -1,12 +1,14 @@
 import React from "react";
 import Layout from "../components/common/Layout";
 import styled from "styled-components";
+import Sidebar from "../components/Sidebar";
+
 
 const Main = () => {
   return (
     <Layout>
       <Container>
-        <Nav>사이드바</Nav>
+      <Sidebar />
         <Content>
           <Tag>
             <div>태그</div>

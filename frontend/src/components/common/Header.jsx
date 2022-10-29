@@ -1,8 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import logo from "../../img/logo.png";
 import { useState } from "react";
 import Modal from "../common/Modal";
+import logo from "../../img/logologo.png";
 
 const Header = () => {
   const [modal, setModal] = useState(false);
@@ -12,9 +13,14 @@ const Header = () => {
   const closeModal = () => {
     setModal(false);
   };
+
+const Header = () => {
+  const navigate = useNavigate();
+
+
   return (
     <StHeader>
-      <StLogo src={logo} />
+      <StLogo src={logo} onClick={() => navigate("/")} />
       <StBtnWrap>
         <StBtnlogin onClick={() => setModal(true)}>로그인</StBtnlogin>
         {modal ? <Modal modal={modal} closemodal={closeModal} /> : null}
@@ -30,12 +36,16 @@ export default Header;
 const StHeader = styled.div`
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid #eeeeef;
+  box-shadow: 0px 13px 12px -15px #eeeeef;
 `;
 const StLogo = styled.img`
   margin: 10px 0 0 50px;
   width: 200px;
   height: 70px;
+  cursor: pointer;
 `;
+
 const StBtnWrap = styled.div`
   margin: 30px 100px 20px 0;
 `;
