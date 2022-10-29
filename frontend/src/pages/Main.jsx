@@ -3,12 +3,11 @@ import Layout from "../components/common/Layout";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
 
-
 const Main = () => {
   return (
     <Layout>
       <Container>
-      <Sidebar />
+        <Sidebar />
         <Content>
           <Tag>
             <div>태그</div>
@@ -71,7 +70,7 @@ export default Main;
 
 const Container = styled.div`
   width: 1200px;
-  height: 100vh;
+
   display: flex;
   margin: 50px auto;
 `;
@@ -110,8 +109,8 @@ const PostBox = styled.div`
 const Inquiry = styled.div`
   position: fixed;
   bottom: 40px;
-  right: 40px;
-  width: 150px;
+  right: 35px;
+  width: 120px;
   height: 40px;
   border: 1px solid blue;
   text-align: center;

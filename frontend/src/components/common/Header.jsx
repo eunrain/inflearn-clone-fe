@@ -14,17 +14,13 @@ const Header = () => {
     setModal(false);
   };
 
-const Header = () => {
-  const navigate = useNavigate();
-
-
   return (
     <StHeader>
-      <StLogo src={logo} onClick={() => navigate("/")} />
+      <StLogo src={logo} />
       <StBtnWrap>
         <StBtnlogin onClick={() => setModal(true)}>로그인</StBtnlogin>
         {modal ? <Modal modal={modal} closemodal={closeModal} /> : null}
-        {/* {modal === true ? <Modal modal={modal} /> : null} */}
+
         <StBtnsignup>회원가입</StBtnsignup>
       </StBtnWrap>
     </StHeader>
@@ -39,6 +35,7 @@ const StHeader = styled.div`
   border-bottom: 1px solid #eeeeef;
   box-shadow: 0px 13px 12px -15px #eeeeef;
 `;
+
 const StLogo = styled.img`
   margin: 10px 0 0 50px;
   width: 200px;
