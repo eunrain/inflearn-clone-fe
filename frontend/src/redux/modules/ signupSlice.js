@@ -14,7 +14,7 @@ export const __signUp = createAsyncThunk(
   "signUp",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.post(`${url}users/signUp`, payload, {
+      const { data } = await axios.post(`${url}/users/signUp`, payload, {
         headers: { "Content-Type": `application/json` },
       });
       console.log(data);
@@ -31,12 +31,14 @@ export const __idDupCheck = createAsyncThunk(
   async (payload, thunkAPI) => {
     console.log(payload);
     try {
-      const { data } = await axios.post(`${url}users/checkId`, payload, {
+      const { data } = await axios.post(`${url}/users/checkId`, payload, {
         headers: { "Content-Type": `application/json` },
       });
+      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      console.log(error.response.data.error);
+      return thunkAPI.rejectWithValue(error.response.data.error);
     }
   }
 );
@@ -54,10 +56,10 @@ const signupSlice = createSlice({
       alert(action.error);
     },
     [__idDupCheck.fulfilled]: (state, action) => {
-      state.message = action.payload;
+      alert(action.payload);
     },
     [__idDupCheck.rejected]: (state, action) => {
-      state.message = action.payload;
+      alert(action.payload);
     },
   },
 });
