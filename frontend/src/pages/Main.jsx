@@ -113,7 +113,7 @@ const PostBox = styled.div`
   }
 `;
 
-const Inquiry = styled.div`
+const Inquiry = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
