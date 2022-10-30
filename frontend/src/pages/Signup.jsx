@@ -35,6 +35,7 @@ const Signup = () => {
   const {
     register, //제어되지 않은 컴포넌트를 Hook과 연결하여 값이 검사될 수 있도록 하고, 폼이 제출될 때 한번에 모아지도록 하는 것(input값 쉽게 관리)
     handleSubmit, //기존에 폼을 제출할 때 나타나는 새로고침 현상이 나타나지 않는다. event.preventDefault() 안써줘도 됌
+    watch,
     formState: { errors },
   } = useForm({
     mode: "onChange",
@@ -52,11 +53,8 @@ const Signup = () => {
     console.log(JSON.stringify(signupBody));
   };
 
-  //id 중복확인
-  const [id, setId] = useState();
-  const onChange = (e) => {
-    setId(e.target.value);
-  };
+  //중복확인
+  const id = watch().id;
   console.log(id);
 
   return (
@@ -69,14 +67,18 @@ const Signup = () => {
               <div>
                 <StId>
                   <p>아이디</p>
-                  <StBtnCheck onClick={() => dispatch(__idDupCheck(id))}>
+                  <StBtnCheck
+                    onClick={() =>
+                      dispatch(__idDupCheck(JSON.stringify({ loginId: id })))
+                    }
+                  >
                     중복 확인
                   </StBtnCheck>
                 </StId>
                 <input
                   type="id"
                   placeholder="id"
-                  onChange={onChange}
+                  // onChange={onChange}
                   {...register("id")}
                 />
                 <StErrMsg>{errors.id && <p>{errors.id.message}</p>}</StErrMsg>
