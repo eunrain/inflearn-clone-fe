@@ -31,7 +31,7 @@ function Modal(props) {
     };
     dispatch(__login(loginBody)).then((response) => {
       if (response.payload.token) {
-        navigate("/");
+        props.closemodal();
       }
     });
 
