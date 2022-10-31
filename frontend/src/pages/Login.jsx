@@ -35,6 +35,7 @@ const Login = () => {
         navigate("/");
       }
     });
+
     console.log(JSON.stringify(loginBody));
   };
 

@@ -20,13 +20,11 @@ export const __login = createAsyncThunk("login", async (payload, thunkAPI) => {
         headers: { "Content-Type": `application/json` },
       }
     );
+
     console.log(data);
     const { token } = await data;
-    const { loginId } = await data.meta.arg;
-    console.log(loginId);
     const localSet = window.localStorage;
     localSet.setItem("token", token);
-
     return thunkAPI.fulfillWithValue(data);
   } catch (error) {
     console.log(error.response.data.error);
@@ -43,7 +41,7 @@ const loginSlice = createSlice({
       alert("로그인에 성공하였습니다.");
     },
     [__login.rejected]: (state, action) => {
-      console.log(action.payload);
+      console.log(action.error);
       state.isLoading = true;
       alert(action.payload);
     },

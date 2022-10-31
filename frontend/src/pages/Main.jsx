@@ -10,9 +10,9 @@ import { __getPostCard } from "../redux/modules/postSlice";
 
 const Main = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(__getPostCard());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(__getPostCard());
+  // }, []);
 
   const [ismouseover, setIsmouseover] = useState(false);
   const [ismouseout, setIsmouseout] = useState(false);
@@ -32,7 +32,7 @@ const Main = () => {
             <PostBox>
               <PostCard1
                 onMouseOver={() => {
-                  setIsmouseover(true);
+                  setIsmouseover(false);
                 }}
               />
               {ismouseover ? <PostCard2 /> : null}
