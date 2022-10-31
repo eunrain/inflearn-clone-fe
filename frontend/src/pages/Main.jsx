@@ -23,16 +23,18 @@ const Main = () => {
           </Tag>
           <List>
             <PostBox>
-              <div
-                onMouseOver={() => {
-                  setIsmouseover(true);
-                }}
-              >
+              <div>
                 <h2>이미지 맵돌리기</h2>
                 <h3>강의 제목</h3>
                 <h4>1000원</h4>
               </div>
-              {ismouseover ? <PostCard /> : null}
+              {ismouseover ? (
+                <PostCard
+                  onMouseOver={() => {
+                    setIsmouseover(true);
+                  }}
+                />
+              ) : null}
             </PostBox>
           </List>
         </Content>
@@ -49,7 +51,6 @@ export default Main;
 
 const Container = styled.div`
   width: 1200px;
-
   display: flex;
   margin: 50px auto;
 `;
