@@ -14,9 +14,6 @@ const Main = () => {
   //   dispatch(__getPostCard());
   // }, []);
 
-  const [ismouseover, setIsmouseover] = useState(false);
-  const [ismouseout, setIsmouseout] = useState(false);
-
   return (
     <Layout>
       <Container>
@@ -30,12 +27,10 @@ const Main = () => {
           </Tag>
           <List>
             <PostBox>
-              <PostCard1
-                onMouseOver={() => {
-                  setIsmouseover(false);
-                }}
-              />
-              {ismouseover ? <PostCard2 /> : null}
+              <PostCard1 />
+              <StPostCard2>
+                <PostCard2 />
+              </StPostCard2>
             </PostBox>
           </List>
         </Content>
@@ -94,7 +89,14 @@ const PostBox = styled.div`
     border: 1px solid black;
   } */
 `;
-
+const StPostCard2 = styled.div`
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  &:hover {
+    opacity: 1;
+  }
+`;
 const Inquiry = styled.button`
   display: flex;
   justify-content: space-between;
