@@ -10,6 +10,7 @@ import PostCard1 from "../components/PostCard1";
 import PostCard2 from "../components/PostCard2";
 import TagBtn from "../components/common/TagBtn";
 
+
 const Router = () => {
   return (
     <BrowserRouter>

@@ -4,10 +4,14 @@ import img from "../../img/logo.png";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { __login } from "../../redux/modules/loginSlice";
+import { useNavigate } from "react-router-dom";
 
 function Modal(props) {
+  const navigate = useNavigate();
   const schema = yup.object().shape({
-    id: yup.string().required(),
+    id: yup.string().min(5).max(15).required(),
     password: yup.string().min(5).max(15).required(),
     confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
   });
@@ -18,8 +22,20 @@ function Modal(props) {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  const dispatch = useDispatch();
   const submitForm = (data) => {
     console.log(data);
+    const loginBody = {
+      loginId: data.id,
+      password: data.password,
+    };
+    dispatch(__login(loginBody)).then((response) => {
+      if (response.payload.token) {
+        navigate("/");
+      }
+    });
+
+    console.log(JSON.stringify(loginBody));
   };
   return (
     <>
