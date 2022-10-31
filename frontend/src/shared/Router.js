@@ -8,6 +8,7 @@ import Chat1 from "../components/Chat1";
 import Chat2 from "../components/Chat2.jsx";
 import PostCard1 from "../components/PostCard1";
 import PostCard2 from "../components/PostCard2";
+import TagBtn from "../components/common/TagBtn";
 
 const Router = () => {
   return (
@@ -21,6 +22,7 @@ const Router = () => {
         <Route path="/chat2" element={<Chat2 />} />
         <Route path="/postcard1" element={<PostCard1 />} />
         <Route path="/postcard2" element={<PostCard2 />} />
+        <Route path="/btn" element={<TagBtn />} />
       </Routes>
     </BrowserRouter>
   );
