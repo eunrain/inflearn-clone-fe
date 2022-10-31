@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import thunk from "redux-thunk";
 
 const initialState = {
   isLoading: false,
@@ -10,21 +9,19 @@ const initialState = {
 
 const url = process.env.REACT_APP_BACK_BASE_URL;
 
-//로그인
-export const __login = createAsyncThunk("login", async (payload, thunkAPI) => {
+//카드 버튼
+export const __cart = createAsyncThunk("cart", async (payload, thunkAPI) => {
+  const token = localStorage.getItem("token");
+  console.log(payload);
   try {
-    const { data } = await axios.post(
-      "https://qkero407.shop/users/login",
+    const { data } = await axios.patch(
+      `https://qkero407.shop/feature/likes/${payload}`,
       payload,
       {
         headers: { "Content-Type": `application/json` },
+        Authorization: `Bearer ${token}`,
       }
     );
-
-    console.log(data);
-    const { token } = await data;
-    const localSet = window.localStorage;
-    localSet.setItem("token", token);
     return thunkAPI.fulfillWithValue(data);
   } catch (error) {
     console.log(error.response.data.error);
@@ -32,20 +29,20 @@ export const __login = createAsyncThunk("login", async (payload, thunkAPI) => {
   }
 });
 
-const loginSlice = createSlice({
-  name: "login",
+const cartSlice = createSlice({
+  name: "cart",
   initialState,
   reducer: {},
   extraReducers: {
-    [__login.fulfilled]: (state, action) => {
-      alert("로그인에 성공하였습니다.");
+    [__cart.fulfilled]: (state, action) => {
+      state.message = action.payload;
+      console.log(state.message);
     },
-    [__login.rejected]: (state, action) => {
-      console.log(action.error);
+    [__cart.rejected]: (state, action) => {
       state.isLoading = true;
       alert(action.payload);
     },
   },
 });
 
-export default loginSlice.reducer;
+export default cartSlice.reducer;
