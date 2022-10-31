@@ -103,7 +103,6 @@ const StChat = styled.div`
     font-size: 19px;
     cursor: pointer;
     background-color: #0000000d;
-    hover: (background-color: #00000008;);
   }
 `;
 

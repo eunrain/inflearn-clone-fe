@@ -2,8 +2,13 @@ import React from "react";
 import Layout from "../components/common/Layout";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
+import PostCard from "../components/PostCard";
+import { useState } from "react";
 
 const Main = () => {
+  const [ismouseover, setIsmouseover] = useState(false);
+  const [ismouseout, setIsmouseout] = useState(false);
+
   return (
     <Layout>
       <Container>
@@ -17,46 +22,16 @@ const Main = () => {
           </Tag>
           <List>
             <PostBox>
-              <div>
+              <div
+                onMouseOver={() => {
+                  setIsmouseover(true);
+                }}
+              >
                 <h2>이미지 맵돌리기</h2>
                 <h3>강의 제목</h3>
                 <h4>1000원</h4>
               </div>
-              <div>
-                <h2>이미지 맵돌리기</h2>
-                <h3>강의 제목</h3>
-                <h4>1000원</h4>
-              </div>
-              <div>
-                <h2>이미지 맵돌리기</h2>
-                <h3>강의 제목</h3>
-                <h4>1000원</h4>
-              </div>
-              <div>
-                <h2>이미지 맵돌리기</h2>
-                <h3>강의 제목</h3>
-                <h4>1000원</h4>
-              </div>
-              <div>
-                <h2>이미지 맵돌리기</h2>
-                <h3>강의 제목</h3>
-                <h4>1000원</h4>
-              </div>
-              <div>
-                <h2>이미지 맵돌리기</h2>
-                <h3>강의 제목</h3>
-                <h4>1000원</h4>
-              </div>
-              <div>
-                <h2>이미지 맵돌리기</h2>
-                <h3>강의 제목</h3>
-                <h4>1000원</h4>
-              </div>
-              <div>
-                <h2>이미지 맵돌리기</h2>
-                <h3>강의 제목</h3>
-                <h4>1000원</h4>
-              </div>
+              {ismouseover ? <PostCard /> : null}
             </PostBox>
           </List>
         </Content>
@@ -93,7 +68,7 @@ const Tag = styled.div`
     border: 1px solid black;
   }
 `;
-const List = styled.div``;
+
 const PostBox = styled.div`
   width: 100%;
   display: flex;
@@ -106,6 +81,8 @@ const PostBox = styled.div`
     border: 1px solid black;
   }
 `;
+const List = styled.div``;
+
 const Inquiry = styled.div`
   position: fixed;
   bottom: 40px;
