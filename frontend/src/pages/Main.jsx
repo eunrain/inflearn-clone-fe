@@ -1,12 +1,19 @@
-import React from "react";
-import Layout from "../components/common/Layout";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import Layout from "../components/common/Layout";
 import Sidebar from "../components/Sidebar";
-import PostCard from "../components/PostCard";
-import { useState } from "react";
+import PostCard1 from "../components/PostCard1";
+import PostCard2 from "../components/PostCard2";
 import green from "../img/inflearn_green.png";
+import { useDispatch } from "react-redux";
+import { __getPostCard } from "../redux/modules/postSlice";
 
 const Main = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(__getPostCard());
+  }, []);
+
   const [ismouseover, setIsmouseover] = useState(false);
   const [ismouseout, setIsmouseout] = useState(false);
 
@@ -23,18 +30,12 @@ const Main = () => {
           </Tag>
           <List>
             <PostBox>
-              <div>
-                <h2>이미지 맵돌리기</h2>
-                <h3>강의 제목</h3>
-                <h4>1000원</h4>
-              </div>
-              {ismouseover ? (
-                <PostCard
-                  onMouseOver={() => {
-                    setIsmouseover(true);
-                  }}
-                />
-              ) : null}
+              <PostCard1
+                onMouseOver={() => {
+                  setIsmouseover(true);
+                }}
+              />
+              {ismouseover ? <PostCard2 /> : null}
             </PostBox>
           </List>
         </Content>
@@ -50,20 +51,23 @@ const Main = () => {
 export default Main;
 
 const Container = styled.div`
-  width: 1200px;
+  width: 1500px;
   display: flex;
-  margin: 50px auto;
+  margin: 40px auto;
+  background-color: yellow;
 `;
 
-const Nav = styled.div`
-  width: 200px;
-  height: 400px;
-  border: 1px solid red;
-  text-align: center;
-`;
+// const Nav = styled.div`
+//   width: 200px;
+//   height: 400px;
+//   border: 1px solid red;
+//   text-align: center;
+// `;
 
 const Content = styled.div`
-  width: 1000px;
+  width: 1300px;
+  margin: 50px auto;
+  background-color: skyblue;
 `;
 
 const Tag = styled.div`
@@ -83,12 +87,12 @@ const PostBox = styled.div`
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  div {
+  /* div {
     margin-top: 50px;
     width: 20%;
     height: 250px;
     border: 1px solid black;
-  }
+  } */
 `;
 
 const Inquiry = styled.button`

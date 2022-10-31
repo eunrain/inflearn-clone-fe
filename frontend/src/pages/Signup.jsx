@@ -6,7 +6,6 @@ import styled from "styled-components";
 import Layout from "../components/common/Layout";
 import { useDispatch } from "react-redux";
 import { __idDupCheck, __signUp } from "../redux/modules/ signupSlice";
-import { useState } from "react";
 
 const Signup = () => {
   const schema = yup.object().shape({
