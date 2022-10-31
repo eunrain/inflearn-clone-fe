@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
@@ -21,6 +21,20 @@ export const __getPostCard = createAsyncThunk(
   }
 );
 
+//카테고리 별 조회
+export const __getCategory = createAsyncThunk(
+  "getCategory",
+  async (payload, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`${url}/posts/${payload}`);
+      console.log(data);
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 const postSlice = createSlice({
   name: "post",
   initialState,
@@ -32,6 +46,14 @@ const postSlice = createSlice({
       console.log(state.data);
     },
     [__getPostCard.rejected]: (state, action) => {
+      alert(action.payload);
+    },
+    [__getCategory.fulfilled]: (state, action) => {
+      //console.log(action.payload);
+      state.data = action.payload;
+      //console.log(current(state));
+    },
+    [__getCategory.rejected]: (state, action) => {
       alert(action.payload);
     },
   },

@@ -1,32 +1,32 @@
 import React, { useEffect } from "react";
-import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { __getCategory } from "../redux/modules/postSlice";
 import Layout from "../components/common/Layout";
 import Sidebar from "../components/Sidebar";
 import PostCard from "../components/PostCard";
 import green from "../img/inflearn_green.png";
-import { useDispatch, useSelector } from "react-redux";
-import { __getPostCard } from "../redux/modules/postSlice";
+import styled from "styled-components";
 
-const Main = () => {
-  const { data } = useSelector((state) => state.post);
-  console.log(data.category);
+const Category = () => {
+  const { id } = useParams();
+  console.log(id);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(__getPostCard());
-  }, []);
+    dispatch(__getCategory(id));
+  }, [dispatch, id]);
+
+  const { data } = useSelector((state) => state.post);
+  console.log(data);
 
   return (
     <Layout>
       <Container>
         <Sidebar />
         <Content>
-          <Tag>
-            <div>태그</div>
-            <div>태그</div>
-            <div>태그</div>
-            <div>태그</div>
-          </Tag>
+          <Tag></Tag>
           <PostBox>
             {data?.map((post) => (
               <PostCard key={post.postId} post={post} />
@@ -42,7 +42,7 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Category;
 
 const Container = styled.div`
   width: 1500px;

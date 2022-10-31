@@ -10,10 +10,13 @@ import { useDispatch } from "react-redux";
 import { __patchheart } from "../redux/modules/heartSlice";
 import { __cart } from "../redux/modules/cartSlice";
 
+
 const PostCard1 = ({ post }) => {
   const dispatch = useDispatch();
   const [heart, setHeart] = useState(false);
   const [cart, setCart] = useState(false);
+
+const PostCard = ({ post }) => {
 
   return (
     <Container>
@@ -75,7 +78,7 @@ const PostCard1 = ({ post }) => {
   );
 };
 
-export default PostCard1;
+export default PostCard;
 
 const Container = styled.div`
   position: relative;
@@ -83,31 +86,27 @@ const Container = styled.div`
 const StPostCard1 = styled.div`
   width: 290px;
   height: 390px;
-  border: 1px solid;
+  margin-bottom: 40px;
 `;
 
 const Img = styled.img`
   width: 290px;
   height: 180px;
-  border: 1px solid red;
 `;
 
 const Title = styled.div`
   width: 290px;
   height: 80px;
-  border: 1px solid blue;
 `;
 
 const Name = styled.div`
   width: 290px;
   height: 55px;
-  border: 1px solid green;
 `;
 
 const Price = styled.div`
   width: 290px;
   height: 55px;
-  border: 1px solid orange;
 `;
 
 // PostCard After
@@ -119,7 +118,6 @@ const StPostCard2 = styled.div`
   border: 1px solid;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.8);
-  color: rgba(0, 0, 0, 0.8);
   opacity: 0;
   color: white;
   &:hover {
