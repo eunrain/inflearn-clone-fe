@@ -10,13 +10,6 @@ import {
 const PostCard1 = ({ post }) => {
   return (
     <Container>
-      <StPostCard1>
-        <Img src={post.thumbnail}></Img>
-        <Title>{post.title}</Title>
-        <Name>{post.tutor}</Name>
-        <Price>{post.price}</Price>
-      </StPostCard1>
-
       <StPostCard2>
         <HoverTitle>{post.title}</HoverTitle>
         <HoverDescrip>{post.description}</HoverDescrip>
@@ -28,6 +21,12 @@ const PostCard1 = ({ post }) => {
           <BsCartXFill size="30" />
         </HoverIcons>
       </StPostCard2>
+      <StPostCard1>
+        <Img src={post.thumbnail}></Img>
+        <Title>{post.title}</Title>
+        <Name>{post.tutor}</Name>
+        <Price>{post.price}</Price>
+      </StPostCard1>
     </Container>
   );
 };
@@ -38,7 +37,6 @@ const Container = styled.div`
   position: relative;
 `;
 const StPostCard1 = styled.div`
-  position: relative;
   width: 290px;
   height: 390px;
   border: 1px solid;
