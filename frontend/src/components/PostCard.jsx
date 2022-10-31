@@ -16,14 +16,17 @@ const PostCard1 = ({ post }) => {
         <Name>{post.tutor}</Name>
         <Price>{post.price}</Price>
       </StPostCard1>
+
       <StPostCard2>
-        <HoverTitle>postcard2</HoverTitle>
-        <HoverDescrip></HoverDescrip>
-        <HoverTag></HoverTag>
-        <BsSuitHeart size="28" />
-        <BsSuitHeartFill size="28" />
-        <BsCartPlus size="30" />
-        <BsCartXFill size="30" />
+        <HoverTitle>{post.title}</HoverTitle>
+        <HoverDescrip>{post.description}</HoverDescrip>
+        <HoverTag>{post.stack}</HoverTag>
+        <HoverIcons>
+          <BsSuitHeart size="28" />
+          <BsSuitHeartFill size="28" />
+          <BsCartPlus size="30" />
+          <BsCartXFill size="30" />
+        </HoverIcons>
       </StPostCard2>
     </Container>
   );
@@ -32,6 +35,10 @@ const PostCard1 = ({ post }) => {
 export default PostCard1;
 
 const Container = styled.div`
+  position: relative;
+`;
+const StPostCard1 = styled.div`
+  position: relative;
   width: 290px;
   height: 390px;
   border: 1px solid;
@@ -63,6 +70,18 @@ const Price = styled.div`
 
 // PostCard After
 
+const StPostCard2 = styled.div`
+  width: 290px;
+  height: 390px;
+  border: 1px solid;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  &:hover {
+    opacity: 1;
+  }
+`;
+
 const HoverTitle = styled.div`
   width: 290px;
   height: 80px;
@@ -83,21 +102,4 @@ const HoverTag = styled.div`
 
 const HoverIcons = styled.div`
   display: flex;
-`;
-
-const StPostCard2 = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.6);
-  opacity: 0;
-  &:hover {
-    opacity: 1;
-  }
-`;
-
-const StPostCard1 = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  position: absolute;
 `;
