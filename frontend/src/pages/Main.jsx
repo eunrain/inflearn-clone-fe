@@ -5,14 +5,17 @@ import Sidebar from "../components/Sidebar";
 import PostCard1 from "../components/PostCard1";
 import PostCard2 from "../components/PostCard2";
 import green from "../img/inflearn_green.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { __getPostCard } from "../redux/modules/postSlice";
 
 const Main = () => {
+  const { data } = useSelector((state) => state.post);
+  console.log(data);
+
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(__getPostCard());
-  // }, []);
+  useEffect(() => {
+    dispatch(__getPostCard());
+  }, []);
 
   return (
     <Layout>
@@ -27,9 +30,14 @@ const Main = () => {
           </Tag>
           <List>
             <PostBox>
-              <PostCard1 />
+              {data?.map((post) => (
+                <PostCard1 key={post.postId} post={post} />
+              ))}
+
               <StPostCard2>
-                <PostCard2 />
+                {data?.map((post) => (
+                  <PostCard2 key={post.postId} post={post} />
+                ))}
               </StPostCard2>
             </PostBox>
           </List>
@@ -78,18 +86,15 @@ const Tag = styled.div`
 const List = styled.div``;
 
 const PostBox = styled.div`
-  width: 100%;
   display: flex;
-  justify-content: space-evenly;
   flex-wrap: wrap;
-  /* div {
-    margin-top: 50px;
-    width: 20%;
-    height: 250px;
-    border: 1px solid black;
-  } */
+  width: 100%;
+  justify-content: space-evenly;
 `;
+
 const StPostCard2 = styled.div`
+  display: flex;
+  flex-wrap: wrap;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.6);
   opacity: 0;
@@ -97,6 +102,7 @@ const StPostCard2 = styled.div`
     opacity: 1;
   }
 `;
+
 const Inquiry = styled.button`
   display: flex;
   justify-content: space-between;

@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const initialState = {};
+const initialState = {
+  data: [],
+};
 
 const url = process.env.REACT_APP_BACK_BASE_URL;
 
@@ -26,7 +28,8 @@ const postSlice = createSlice({
   extraReducers: {
     // 메인페이지 포스트 카드 get
     [__getPostCard.fulfilled]: (state, action) => {
-      state = action.payload;
+      state.data = action.payload;
+      console.log(state.data);
     },
     [__getPostCard.rejected]: (state, action) => {
       alert(action.payload);
