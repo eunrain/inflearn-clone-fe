@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import thunk from "redux-thunk";
 
 const initialState = {
   isLoading: false,
@@ -31,23 +30,6 @@ export const __login = createAsyncThunk("login", async (payload, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.response.data.error);
   }
 });
-
-export const __deleteSeung = createAsyncThunk(
-  "seungSlice/delete",
-  async (payload, thunkAPI) => {
-    const token = localStorage.getItem("token");
-    const headers = { Authorization: `Bearer ${token}` };
-    try {
-      const { data } = await axios.delete(
-        `https://chamchimayo.shop/users/${payload.userId}`,
-        { headers }
-      );
-      return thunkAPI.fulfillWithValue(data);
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-);
 
 const loginSlice = createSlice({
   name: "login",
