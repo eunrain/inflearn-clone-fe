@@ -7,7 +7,7 @@ import {
   BsCartXFill,
 } from "react-icons/bs";
 
-const PostCard1 = ({ post }) => {
+const PostCard = ({ post }) => {
   return (
     <Container>
       <StPostCard2>
@@ -31,7 +31,7 @@ const PostCard1 = ({ post }) => {
   );
 };
 
-export default PostCard1;
+export default PostCard;
 
 const Container = styled.div`
   position: relative;
@@ -39,31 +39,27 @@ const Container = styled.div`
 const StPostCard1 = styled.div`
   width: 290px;
   height: 390px;
-  border: 1px solid;
+  margin-bottom: 40px;
 `;
 
 const Img = styled.img`
   width: 290px;
   height: 180px;
-  border: 1px solid red;
 `;
 
 const Title = styled.div`
   width: 290px;
   height: 80px;
-  border: 1px solid blue;
 `;
 
 const Name = styled.div`
   width: 290px;
   height: 55px;
-  border: 1px solid green;
 `;
 
 const Price = styled.div`
   width: 290px;
   height: 55px;
-  border: 1px solid orange;
 `;
 
 // PostCard After
@@ -73,8 +69,9 @@ const StPostCard2 = styled.div`
   height: 390px;
   border: 1px solid;
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
   opacity: 0;
+  color: white;
   &:hover {
     opacity: 1;
   }
@@ -83,19 +80,16 @@ const StPostCard2 = styled.div`
 const HoverTitle = styled.div`
   width: 290px;
   height: 80px;
-  border: 1px solid blue;
 `;
 
 const HoverDescrip = styled.div`
   width: 290px;
   height: 140px;
-  border: 1px solid green;
 `;
 
 const HoverTag = styled.div`
   width: 290px;
   height: 55px;
-  border: 1px solid orange;
 `;
 
 const HoverIcons = styled.div`
