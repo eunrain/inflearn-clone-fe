@@ -10,7 +10,7 @@ import {
 const PostCard2 = () => {
   return (
     <Container>
-      <Title></Title>
+      <Title>postcard2</Title>
       <Descrip></Descrip>
       <Tag></Tag>
       <BsSuitHeart size="28" />

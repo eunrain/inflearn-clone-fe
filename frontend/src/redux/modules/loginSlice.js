@@ -22,8 +22,9 @@ export const __login = createAsyncThunk("login", async (payload, thunkAPI) => {
     );
     console.log(data);
     const { token } = await data;
-    const { loginId } = await data.meta.arg;
-    console.log(loginId);
+    console.log(token);
+    //const { loginId } = await data.meta.arg;
+    //console.log(loginId);
     const localSet = window.localStorage;
     localSet.setItem("token", token);
 
@@ -33,6 +34,23 @@ export const __login = createAsyncThunk("login", async (payload, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.response.data.error);
   }
 });
+
+export const __deleteSeung = createAsyncThunk(
+  "seungSlice/delete",
+  async (payload, thunkAPI) => {
+    const token = localStorage.getItem("token");
+    const headers = { Authorization: `Bearer ${token}` };
+    try {
+      const { data } = await axios.delete(
+        `https://chamchimayo.shop/users/${payload.userId}`,
+        { headers }
+      );
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 const loginSlice = createSlice({
   name: "login",

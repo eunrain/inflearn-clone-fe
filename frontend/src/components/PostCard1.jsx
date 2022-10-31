@@ -5,7 +5,7 @@ const PostCard1 = () => {
   return (
     <Container>
       <Img></Img>
-      <Title></Title>
+      <Title>postcard1</Title>
       <Name></Name>
       <Price></Price>
     </Container>
