@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
 import PostCard from "../components/PostCard";
 import { useState } from "react";
+import green from "../img/inflearn_green.png";
 
 const Main = () => {
   const [ismouseover, setIsmouseover] = useState(false);
@@ -35,7 +36,10 @@ const Main = () => {
             </PostBox>
           </List>
         </Content>
-        <Inquiry>문의하기컴포넌트</Inquiry>
+        <Inquiry>
+          <span>문의하기</span>
+          <img alt="인프런 상담 버튼" src={green} />
+        </Inquiry>
       </Container>
     </Layout>
   );
@@ -49,6 +53,7 @@ const Container = styled.div`
   display: flex;
   margin: 50px auto;
 `;
+
 const Nav = styled.div`
   width: 200px;
   height: 400px;
@@ -59,6 +64,7 @@ const Nav = styled.div`
 const Content = styled.div`
   width: 1000px;
 `;
+
 const Tag = styled.div`
   display: flex;
   justify-content: space-evenly;
@@ -68,6 +74,8 @@ const Tag = styled.div`
     border: 1px solid black;
   }
 `;
+
+const List = styled.div``;
 
 const PostBox = styled.div`
   width: 100%;
@@ -81,15 +89,31 @@ const PostBox = styled.div`
     border: 1px solid black;
   }
 `;
-const List = styled.div``;
 
-const Inquiry = styled.div`
+const Inquiry = styled.button`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   position: fixed;
   bottom: 40px;
   right: 35px;
-  width: 120px;
-  height: 40px;
-  border: 1px solid blue;
-  text-align: center;
-  line-height: 40px;
+  width: 195px;
+  height: 75px;
+  cursor: pointer;
+  border: 1px solid #e4e4e4;
+  border-radius: 40px;
+  box-shadow: 0 5px 10px #efeff0;
+  background-color: white;
+
+  span {
+    margin-left: 30px;
+    font-size: 19px;
+    font-weight: 600;
+  }
+  img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
 `;

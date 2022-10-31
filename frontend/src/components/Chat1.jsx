@@ -9,7 +9,7 @@ const Chat = () => {
   return (
     <StBox>
       <StHeader>
-        <img src={green} />
+        <img alt="인프런 로고 초록" src={green} />
         <div>인프런</div>
         <button>
           <BsXLg size="20" color="#00c471" />
@@ -21,7 +21,7 @@ const Chat = () => {
       </StContent>
       <StChat>
         <StChatContent>
-          <img src={white} />
+          <img alt="인프런 로고 화이트" src={white} />
           <div>
             인프런
             <p>

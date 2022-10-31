@@ -4,6 +4,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styled from "styled-components";
 import Layout from "../components/common/Layout";
+import { useDispatch } from "react-redux";
+import { __idDupCheck, __signUp } from "../redux/modules/ signupSlice";
+import { useState } from "react";
 
 const Signup = () => {
   const schema = yup.object().shape({
@@ -32,13 +35,27 @@ const Signup = () => {
   const {
     register, //제어되지 않은 컴포넌트를 Hook과 연결하여 값이 검사될 수 있도록 하고, 폼이 제출될 때 한번에 모아지도록 하는 것(input값 쉽게 관리)
     handleSubmit, //기존에 폼을 제출할 때 나타나는 새로고침 현상이 나타나지 않는다. event.preventDefault() 안써줘도 됌
+    watch,
     formState: { errors },
   } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
   });
 
-  const onSignupHandler = (data) => console.log(data);
+  //회원가입
+  const dispatch = useDispatch();
+  const onSignupHandler = (data) => {
+    const signupBody = {
+      loginId: data.id,
+      password: data.password,
+    };
+    dispatch(__signUp(signupBody));
+    console.log(JSON.stringify(signupBody));
+  };
+
+  //중복확인
+  const id = watch().id;
+  console.log(id);
 
   return (
     <Layout>
@@ -50,9 +67,20 @@ const Signup = () => {
               <div>
                 <StId>
                   <p>아이디</p>
-                  <StBtnCheck>중복 확인</StBtnCheck>
+                  <StBtnCheck
+                    onClick={() =>
+                      dispatch(__idDupCheck(JSON.stringify({ loginId: id })))
+                    }
+                  >
+                    중복 확인
+                  </StBtnCheck>
                 </StId>
-                <input type="id" placeholder="id" {...register("id")} />
+                <input
+                  type="id"
+                  placeholder="id"
+                  // onChange={onChange}
+                  {...register("id")}
+                />
                 <StErrMsg>{errors.id && <p>{errors.id.message}</p>}</StErrMsg>
               </div>
 
@@ -151,6 +179,7 @@ const StBtnSignup = styled.button`
   font-size: 19px;
   margin-top: 50px;
   background-color: #00c471;
+  cursor: pointer;
 `;
 
 const StErrMsg = styled.div`
