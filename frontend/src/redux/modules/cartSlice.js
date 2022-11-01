@@ -17,7 +17,7 @@ export const __patchcart = createAsyncThunk(
     console.log(payload);
     try {
       const { data } = await axios.post(
-        `https://qkero407.shop/feature/likes/${payload}`,
+        `${url}/feature/likes/${payload}`,
         payload,
         {
           headers: { "Content-Type": `application/json` },

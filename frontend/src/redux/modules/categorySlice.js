@@ -28,7 +28,7 @@ export const __getStack = createAsyncThunk("tag", async (payload, thunkAPI) => {
   console.log(payload);
   try {
     const { data } = await axios.get(
-      `https://qkero407.shop/posts/${payload.category}/${payload.stack}`,
+      `${url}/posts/${payload.category}/${payload.stack}`,
       payload,
       {
         headers: { "Content-Type": `application/json` },
