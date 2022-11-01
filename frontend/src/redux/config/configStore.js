@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import signup from "../modules/ signupSlice";
+import signup from "../modules/signupSlice";
 import post from "../modules/postSlice";
 import login from "../modules/loginSlice";
 import cart from "../modules/cartSlice";
