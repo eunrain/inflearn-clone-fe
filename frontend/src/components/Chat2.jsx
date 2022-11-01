@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { BsXLg } from "react-icons/bs";
 import { IoIosArrowBack } from "react-icons/io";
 
-const Chat2 = () => {
+const Chat2 = ({ setNewInquiry }) => {
   return (
     <StContainer>
       <StBox>
@@ -12,7 +12,11 @@ const Chat2 = () => {
             <IoIosArrowBack size="25" color="#00c471" />
           </button>
           <div>인프런</div>
-          <button>
+          <button
+            onClick={() => {
+              setNewInquiry(false);
+            }}
+          >
             <BsXLg size="18" color="#00c471" />
           </button>
         </StHeader>
@@ -49,7 +53,6 @@ const StHeader = styled.div`
   border-top-left-radius: 35px;
   border-top-right-radius: 35px;
   div {
-    margin: 0 265px 0 0;
     font-size: 19px;
     font-weight: 600;
   }
