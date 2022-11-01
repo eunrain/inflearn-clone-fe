@@ -87,8 +87,8 @@ const ModalBackground = styled.div`
 `;
 
 const ModalBox = styled.div`
-  width: 400px;
-  height: 490px;
+  width: 450px;
+  height: 530px;
   position: absolute;
   top: 50%;
   left: 50%;
