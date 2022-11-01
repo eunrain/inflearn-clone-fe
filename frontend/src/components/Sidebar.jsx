@@ -22,6 +22,7 @@ const StLinkTitle = styled(Link)`
   padding: 29px 0;
   border-bottom: 1px solid #e4e4e4;
   font-size: 20px;
+  text-decoration-line: none;
 `;
 const StLink = styled(Link)`
   display: block;
@@ -29,6 +30,7 @@ const StLink = styled(Link)`
   padding: 24px 0;
   font-size: 20px;
   border-bottom: 1px solid #e4e4e4;
+  text-decoration-line: none;
 `;
 
 const StLinkEnd = styled(Link)`
@@ -36,6 +38,7 @@ const StLinkEnd = styled(Link)`
   text-align: center;
   padding: 25px 0;
   font-size: 20px;
+  text-decoration: none;
 `;
 
 const StContainer = styled.div`

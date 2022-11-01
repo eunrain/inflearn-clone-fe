@@ -63,7 +63,6 @@ const Tag = styled.div`
 `;
 
 const PostBox = styled.div`
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -74,7 +73,6 @@ const Inquiry = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   position: fixed;
   bottom: 40px;
   right: 35px;
