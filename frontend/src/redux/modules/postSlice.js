@@ -42,6 +42,7 @@ const postSlice = createSlice({
   extraReducers: {
     // 메인페이지 포스트 카드 get
     [__getPostCard.fulfilled]: (state, action) => {
+      console.log(action.payload);
       state.data = action.payload;
       console.log(state.data);
     },
@@ -49,7 +50,7 @@ const postSlice = createSlice({
       alert(action.payload);
     },
     [__getCategory.fulfilled]: (state, action) => {
-      //console.log(action.payload);
+      console.log(action);
       state.data = action.payload;
       //console.log(current(state));
     },

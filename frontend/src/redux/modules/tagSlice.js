@@ -9,11 +9,11 @@ const initialState = {
 
 const url = process.env.REACT_APP_BACK_BASE_URL;
 
-//로그인
+//태그
 export const __tag = createAsyncThunk("tag", async (payload, thunkAPI) => {
   try {
     const { data } = await axios.get(
-      `https://qkero407.shop/posts/${}/${payload}`,
+      `https://qkero407.shop/posts/${payload}`,
       payload,
       {
         headers: { "Content-Type": `application/json` },

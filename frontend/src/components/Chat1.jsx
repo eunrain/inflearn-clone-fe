@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import green from "../img/inflearn_green.png";
 import white from "../img/inflearn_white.png";
 import { BsXLg } from "react-icons/bs";
 import { IoSend } from "react-icons/io5";
+import Chat2 from "./Chat2";
 
-const Chat1 = () => {
+const Chat1 = ({ setInquiry }) => {
+  const [newInquiry, setNewInquiry] = useState(false);
+  console.log(newInquiry);
   return (
     <StContainer>
       <StBox>
         <StHeader>
           <img alt="인프런 로고 초록" src={green} />
           <div>인프런</div>
-          <button>
+          <button onClick={() => setInquiry(false)}>
             <BsXLg size="20" color="#00c471" />
           </button>
         </StHeader>
@@ -31,10 +34,11 @@ const Chat1 = () => {
               <p>오늘도 인프런을 이용해주셔서 감사해요.</p>
             </div>
           </StChatContent>
-          <button>
+          <Button onClick={() => setNewInquiry(true)}>
             <IoSend />
             <strong>새 문의하기</strong>
-          </button>
+          </Button>
+          {newInquiry ? <Chat2 setNewInquiry={setNewInquiry} /> : null}
         </StChat>
       </StBox>
     </StContainer>
@@ -42,6 +46,17 @@ const Chat1 = () => {
 };
 
 export default Chat1;
+
+const Button = styled.button`
+  width: 370px;
+  height: 60px;
+  margin: auto;
+  border-radius: 20px;
+  border: none;
+  font-size: 19px;
+  cursor: pointer;
+  background-color: #0000000d;
+`;
 
 const StContainer = styled.div`
   bottom: 40px;
@@ -102,16 +117,6 @@ const StChat = styled.div`
   border: 1px solid lightgray;
   box-shadow: 15px 10px 30px #efeff0;
   margin: -10px auto 0 auto;
-  button {
-    width: 370px;
-    height: 60px;
-    margin: auto;
-    border-radius: 20px;
-    border: none;
-    font-size: 19px;
-    cursor: pointer;
-    background-color: #0000000d;
-  }
 `;
 
 const StChatContent = styled.div`

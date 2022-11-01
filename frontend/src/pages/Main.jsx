@@ -8,7 +8,6 @@ import { __getPostCard } from "../redux/modules/postSlice";
 import TagBtn from "../components/common/TagBtn";
 import InquiryBtn from "../components/common/InquiryBtn";
 import Chat1 from "../components/Chat1";
-import Chat from "../components/Chat1";
 
 const Main = () => {
   const { data } = useSelector((state) => state.post);
@@ -19,7 +18,8 @@ const Main = () => {
     dispatch(__getPostCard());
   }, []);
 
-  const [isInquiry, setIsInquiry] = useState(false);
+  const [inquiry, setInquiry] = useState(false);
+  console.log(inquiry);
 
   return (
     <Layout>
@@ -36,18 +36,10 @@ const Main = () => {
               <PostCard key={post.postId} post={post} />
             ))}
           </PostBox>
-          <Chat1 />
         </Content>
-        {isInquiry ? (
-          <Chat1 />
-        ) : (
-          <InquiryBtn
-            onClick={() => {
-              setIsInquiry(true);
-            }}
-          />
-        )}
       </Container>
+      <InquiryBtn setInquiry={setInquiry} />
+      {inquiry ? <Chat1 setInquiry={setInquiry} /> : null}
     </Layout>
   );
 };

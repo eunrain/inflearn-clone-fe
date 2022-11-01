@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { __getCategory } from "../redux/modules/postSlice";
@@ -8,6 +8,8 @@ import PostCard from "../components/PostCard";
 import green from "../img/inflearn_green.png";
 import styled from "styled-components";
 import TagBtn from "../components/common/TagBtn";
+import InquiryBtn from "../components/common/InquiryBtn";
+import Chat1 from "../components/Chat1";
 
 const Category = () => {
   const { id } = useParams();
@@ -21,6 +23,8 @@ const Category = () => {
 
   const { data } = useSelector((state) => state.post);
   console.log(data);
+
+  const [inquiry, setInquiry] = useState(false);
 
   return (
     <Layout>
@@ -38,10 +42,9 @@ const Category = () => {
             ))}
           </PostBox>
         </Content>
-        <Inquiry>
-          <span>문의하기</span>
-          <img alt="인프런 상담 버튼" src={green} />
-        </Inquiry>
+
+        <InquiryBtn setInquiry={setInquiry} />
+        {inquiry ? <Chat1 setInquiry={setInquiry} /> : null}
       </Container>
     </Layout>
   );
