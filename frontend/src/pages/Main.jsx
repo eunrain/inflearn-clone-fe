@@ -63,6 +63,7 @@ const Tag = styled.div`
 `;
 
 const PostBox = styled.div`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   width: 100%;

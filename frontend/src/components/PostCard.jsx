@@ -81,27 +81,32 @@ const Container = styled.div`
   position: relative;
 `;
 const StPostCard1 = styled.div`
+  position: relative;
   width: 290px;
   height: 390px;
   margin-bottom: 40px;
 `;
 
 const Img = styled.img`
+  position: relative;
   width: 290px;
   height: 180px;
 `;
 
 const Title = styled.div`
+  position: relative;
   width: 290px;
   height: 80px;
 `;
 
 const Name = styled.div`
+  position: relative;
   width: 290px;
   height: 55px;
 `;
 
 const Price = styled.div`
+  position: relative;
   width: 290px;
   height: 55px;
 `;
