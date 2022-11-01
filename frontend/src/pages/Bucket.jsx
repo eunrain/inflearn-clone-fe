@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../components/common/Layout";
 import styled from "styled-components";
 import { useState } from "react";
+import { __getHeart } from "../redux/modules/heartSlice";
+import { useDispatch } from "react-redux";
 
 const Bucket = () => {
   const data = [

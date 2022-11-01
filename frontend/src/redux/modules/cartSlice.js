@@ -20,10 +20,12 @@ export const __patchcart = createAsyncThunk(
         `${url}/feature/likes/${payload}`,
         payload,
         {
-          headers: { "Content-Type": `application/json` },
-          Authorization: `Bearer ${token}`,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
+      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       console.log(error.response.data.error);
