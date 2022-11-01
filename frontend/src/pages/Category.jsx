@@ -7,6 +7,7 @@ import Sidebar from "../components/Sidebar";
 import PostCard from "../components/PostCard";
 import green from "../img/inflearn_green.png";
 import styled from "styled-components";
+import TagBtn from "../components/common/TagBtn";
 
 const Category = () => {
   const { id } = useParams();
@@ -26,7 +27,11 @@ const Category = () => {
       <Container>
         <Sidebar />
         <Content>
-          <Tag></Tag>
+          <Tag>
+            {data?.map((post) => (
+              <TagBtn key={post.postId} post={post} />
+            ))}
+          </Tag>
           <PostBox>
             {data?.map((post) => (
               <PostCard key={post.postId} post={post} />
@@ -57,12 +62,9 @@ const Content = styled.div`
 
 const Tag = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  div {
-    width: 50px;
-    text-align: center;
-    border: 1px solid black;
-  }
+  justify-content: left;
+  margin-left: 18px;
+  margin: 0 0 20px 18px;
 `;
 
 const PostBox = styled.div`

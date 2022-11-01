@@ -20,10 +20,13 @@ export const __login = createAsyncThunk("login", async (payload, thunkAPI) => {
       }
     );
 
-    console.log(data);
     const { token } = await data;
+    const { loginId } = await data;
+
     const localSet = window.localStorage;
+
     localSet.setItem("token", token);
+    localSet.setItem("loginId", loginId);
     return thunkAPI.fulfillWithValue(data);
   } catch (error) {
     console.log(error.response.data.error);

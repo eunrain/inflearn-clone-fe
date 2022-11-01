@@ -5,7 +5,7 @@ import * as yup from "yup";
 import styled from "styled-components";
 import Layout from "../components/common/Layout";
 import { useDispatch } from "react-redux";
-import { __idDupCheck, __signUp } from "../redux/modules/ signupSlice";
+import { __idDupCheck, __signUp } from "../redux/modules/signupSlice";
 
 const Signup = () => {
   const schema = yup.object().shape({
