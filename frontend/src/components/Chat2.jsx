@@ -53,7 +53,7 @@ const StHeader = styled.div`
   border-top-left-radius: 35px;
   border-top-right-radius: 35px;
   div {
-    font-size: 19px;
+    font-size: 20px;
     font-weight: 600;
   }
   button {
