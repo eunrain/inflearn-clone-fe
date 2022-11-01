@@ -9,7 +9,7 @@ const initialState = {
 
 const url = process.env.REACT_APP_BACK_BASE_URL;
 
-//좋아요 버튼
+//좋아요 patch
 export const __patchheart = createAsyncThunk(
   "heart",
   async (payload, thunkAPI) => {

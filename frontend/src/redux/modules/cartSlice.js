@@ -9,7 +9,7 @@ const initialState = {
 
 const url = process.env.REACT_APP_BACK_BASE_URL;
 
-//카드 버튼
+//카트 patch
 export const __patchcart = createAsyncThunk(
   "cart",
   async (payload, thunkAPI) => {

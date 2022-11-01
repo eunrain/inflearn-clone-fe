@@ -36,11 +36,13 @@ const Bucket = () => {
       setCheckItems([]);
     }
   };
+
+  const loginId = localStorage.getItem("loginId");
+
   return (
     <Layout>
       <Container>
-        <p>아이디님의 수강바구니</p>
-        <h2>수강바구니</h2>
+        <h2>{loginId}님의 수강바구니</h2>
         <Wrap>
           <CheckBox>
             <input
