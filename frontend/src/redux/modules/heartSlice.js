@@ -14,16 +14,16 @@ export const __patchheart = createAsyncThunk(
   "heart",
   async (payload, thunkAPI) => {
     const token = localStorage.getItem("token");
-    console.log(payload);
+    console.log(token);
     try {
       const { data } = await axios.post(
         `${url}/feature/likes/${payload}`,
         payload,
         {
-          headers: { "Content-Type": `application/json` },
-          Authorization: `Bearer ${token}`,
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
+      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.error);
