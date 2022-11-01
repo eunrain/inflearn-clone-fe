@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import green from "../../img/inflearn_green.png";
 
-const InquiryBtn = () => {
+const InquiryBtn = ({ setInquiry }) => {
   return (
-    <Inquiry>
+    <Inquiry onClick={() => setInquiry(true)}>
       <span>문의하기</span>
       <img alt="인프런 상담 버튼" src={green} />
     </Inquiry>
