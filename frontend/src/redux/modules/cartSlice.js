@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
+  data: [],
   isLoading: false,
   error: null,
   message: "",
@@ -20,9 +21,7 @@ export const __patchcart = createAsyncThunk(
         `${url}/feature/likes/${payload}`,
         payload,
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
       console.log(data);
@@ -30,6 +29,25 @@ export const __patchcart = createAsyncThunk(
     } catch (error) {
       console.log(error.response.data.error);
       return thunkAPI.rejectWithValue(error.response.data.error);
+    }
+  }
+);
+
+//카트 get
+export const __getCart = createAsyncThunk(
+  "getCart",
+  async (payload, thunkAPI) => {
+    const token = localStorage.getItem("token");
+    try {
+      const { data } = await axios.get(`${url}/users/buckets`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(data);
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -43,7 +61,12 @@ const cartSlice = createSlice({
       state.message = action.payload;
     },
     [__patchcart.rejected]: (state, action) => {
-      state.isLoading = true;
+      alert(action.payload);
+    },
+    [__getCart.fulfilled]: (state, action) => {
+      state.data = action.payload;
+    },
+    [__getCart.rejected]: (state, action) => {
       alert(action.payload);
     },
   },
