@@ -5,41 +5,49 @@ import white from "../img/inflearn_white.png";
 import { BsXLg } from "react-icons/bs";
 import { IoSend } from "react-icons/io5";
 
-const Chat = () => {
+const Chat1 = () => {
   return (
-    <StBox>
-      <StHeader>
-        <img alt="인프런 로고 초록" src={green} />
-        <div>인프런</div>
-        <button>
-          <BsXLg size="20" color="#00c471" />
-        </button>
-      </StHeader>
-      <StContent>
-        성장기회의 평등🌱
-        <p>궁금한 점은 언제든지 문의해주세요.</p>
-      </StContent>
-      <StChat>
-        <StChatContent>
-          <img alt="인프런 로고 화이트" src={white} />
-          <div>
-            인프런
-            <p>
-              안녕하세요 <strong>인프런</strong>입니다 😀
-            </p>
-            <p>오늘도 인프런을 이용해주셔서 감사해요.</p>
-          </div>
-        </StChatContent>
-        <button>
-          <IoSend />
-          <strong>새 문의하기</strong>
-        </button>
-      </StChat>
-    </StBox>
+    <StContainer>
+      <StBox>
+        <StHeader>
+          <img alt="인프런 로고 초록" src={green} />
+          <div>인프런</div>
+          <button>
+            <BsXLg size="20" color="#00c471" />
+          </button>
+        </StHeader>
+        <StContent>
+          성장기회의 평등🌱
+          <p>궁금한 점은 언제든지 문의해주세요.</p>
+        </StContent>
+        <StChat>
+          <StChatContent>
+            <img alt="인프런 로고 화이트" src={white} />
+            <div>
+              인프런
+              <p>
+                안녕하세요 <strong>인프런</strong>입니다 😀
+              </p>
+              <p>오늘도 인프런을 이용해주셔서 감사해요.</p>
+            </div>
+          </StChatContent>
+          <button>
+            <IoSend />
+            <strong>새 문의하기</strong>
+          </button>
+        </StChat>
+      </StBox>
+    </StContainer>
   );
 };
 
-export default Chat;
+export default Chat1;
+
+const StContainer = styled.div`
+  bottom: 40px;
+  right: 35px;
+  position: fixed;
+`;
 
 const StBox = styled.div`
   width: 450px;

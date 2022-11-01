@@ -2,23 +2,32 @@ import React from "react";
 import styled from "styled-components";
 import { BsXLg } from "react-icons/bs";
 import { IoIosArrowBack } from "react-icons/io";
+
 const Chat2 = () => {
   return (
-    <StBox>
-      <StHeader>
-        <button>
-          <IoIosArrowBack size="25" color="#00c471" />
-        </button>
-        <div>인프런</div>
-        <button>
-          <BsXLg size="18" color="#00c471" />
-        </button>
-      </StHeader>
-    </StBox>
+    <StContainer>
+      <StBox>
+        <StHeader>
+          <button>
+            <IoIosArrowBack size="25" color="#00c471" />
+          </button>
+          <div>인프런</div>
+          <button>
+            <BsXLg size="18" color="#00c471" />
+          </button>
+        </StHeader>
+      </StBox>
+    </StContainer>
   );
 };
 
 export default Chat2;
+
+const StContainer = styled.div`
+  bottom: 40px;
+  right: 35px;
+  position: fixed;
+`;
 
 const StBox = styled.div`
   width: 450px;

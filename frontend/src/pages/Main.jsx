@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Layout from "../components/common/Layout";
 import Sidebar from "../components/Sidebar";
@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { __getPostCard } from "../redux/modules/postSlice";
 import TagBtn from "../components/common/TagBtn";
 import InquiryBtn from "../components/common/InquiryBtn";
+import Chat1 from "../components/Chat1";
+import Chat from "../components/Chat1";
 
 const Main = () => {
   const { data } = useSelector((state) => state.post);
@@ -16,6 +18,8 @@ const Main = () => {
   useEffect(() => {
     dispatch(__getPostCard());
   }, []);
+
+  const [isInquiry, setIsInquiry] = useState(false);
 
   return (
     <Layout>
@@ -32,8 +36,17 @@ const Main = () => {
               <PostCard key={post.postId} post={post} />
             ))}
           </PostBox>
+          <Chat1 />
         </Content>
-        <InquiryBtn />
+        {isInquiry ? (
+          <Chat1 />
+        ) : (
+          <InquiryBtn
+            onClick={() => {
+              setIsInquiry(true);
+            }}
+          />
+        )}
       </Container>
     </Layout>
   );
