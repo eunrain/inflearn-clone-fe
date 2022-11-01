@@ -8,7 +8,7 @@ import {
 } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { __patchheart } from "../redux/modules/heartSlice";
-import { __cart } from "../redux/modules/cartSlice";
+import { __patchcart } from "../redux/modules/cartSlice";
 
 const PostCard = ({ post }) => {
   const dispatch = useDispatch();
@@ -53,7 +53,7 @@ const PostCard = ({ post }) => {
             <BsCartPlus
               onClick={() => {
                 setCart(true);
-                dispatch(__cart(post.postId));
+                dispatch(__patchcart(post.postId));
               }}
               className="emCart"
               size="30"

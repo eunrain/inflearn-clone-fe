@@ -47,12 +47,12 @@ const Login = () => {
         <InputBox>
           <form onSubmit={handleSubmit(submitForm)}>
             <div>
-              <input type="text" placeholder="아이디" {...register("id")} />
+              <input type="id" placeholder="아이디" {...register("id")} />
               <span>{errors.id && "아이디 형식에 맞지 않습니다😅"}</span>
             </div>
             <div>
               <input
-                type="text"
+                type="password"
                 placeholder="비밀번호"
                 {...register("password")}
               />
