@@ -4,7 +4,8 @@ import styled from "styled-components";
 import { useState } from "react";
 import Modal from "../common/Modal";
 import logo from "../../img/logologo.png";
-import { BsCart3, BsPerson } from "react-icons/bs";
+import { BsCart3 } from "react-icons/bs";
+import { IoLogOutOutline } from "react-icons/io5";
 const Header = () => {
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
@@ -21,6 +22,12 @@ const Header = () => {
 
   const loginId = localStorage.getItem("loginId");
 
+  const onLogout = () => {
+    if (window.confirm("로그아웃 하시겠습니까?")) {
+      localStorage.clear();
+      window.location.reload();
+    }
+  };
   return (
     <div>
       <StHeader>
@@ -37,8 +44,10 @@ const Header = () => {
             <StBtnWrap>
               <div>{loginId}님 환영합니다!</div>
               <StBtn>
-                <BsCart3 size="30" onClick={() => navigate("/bucket")} />
-                <BsPerson size="30" />
+                <BucketBtn>
+                  <BsCart3 size="35" onClick={() => navigate("/bucket")} />
+                </BucketBtn>
+                <IoLogOutOutline size="35" onClick={() => onLogout()} />
               </StBtn>
             </StBtnWrap>
           )}
@@ -91,5 +100,12 @@ const StBtnsignup = styled.button`
 `;
 
 const StBtn = styled.div`
+  display: flex;
   cursor: pointer;
 `;
+
+const BucketBtn = styled.div`
+  margin-right: 10px;
+`;
+
+const Stuser = styled.div``;

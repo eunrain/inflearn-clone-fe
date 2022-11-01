@@ -92,16 +92,21 @@ const Img = styled.img`
 const Title = styled.div`
   width: 290px;
   height: 80px;
+  font-size: 20px;
+  font-weight: 600;
 `;
 
 const Name = styled.div`
   width: 290px;
   height: 55px;
+  font-size: 17px;
+  margin-top: 10px;
 `;
 
 const Price = styled.div`
   width: 290px;
   height: 55px;
+  font-size: 17px;
 `;
 
 // PostCard After
@@ -120,14 +125,27 @@ const StPostCard2 = styled.div`
   }
 `;
 
+const HoverContent = styled.div`
+  margin: auto;
+`;
 const HoverTitle = styled.div`
   width: 290px;
   height: 80px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 25px;
 `;
 
 const HoverDescrip = styled.div`
   width: 290px;
-  height: 140px;
+  max-height: 180px;
+  background-color: red;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
 `;
 
 const HoverTag = styled.div`

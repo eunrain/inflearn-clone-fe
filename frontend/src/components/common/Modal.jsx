@@ -42,7 +42,7 @@ function Modal(props) {
       <ModalBackground>
         <ModalBox>
           <LogoBox>
-            <img src={img} />
+            <img alt="로고 이미지" src={img} />
             <div onClick={props.closemodal}>X</div>
           </LogoBox>
           <InputBox>
