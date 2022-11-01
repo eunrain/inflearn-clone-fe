@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import __tag from "../../redux/modules/tagSlice";
+import { __getStack } from "../../redux/modules/categorySlice";
 
-const TagBtn = ({ post }) => {
+const TagBtn = ({ post, id }) => {
+  console.log(id);
   const dispatch = useDispatch();
-  const { data } = useSelector();
+  // const { data } = useSelector();
   const [color, setColor] = useState("#b8b8b8");
   const tabHandler = () => {
     color === "#b8b8b8" ? setColor("green") : setColor("#b8b8b8");
@@ -14,7 +15,9 @@ const TagBtn = ({ post }) => {
     <Wrap>
       <Btn
         onClick={() => {
-          tabHandler(dispatch(__tag(stack.id)));
+          tabHandler();
+          dispatch(__getStack({ category: id, stack: `${post.stack}` }));
+          console.log({ category: id, stack: `${post.stack}` });
         }}
         color={color}
       >

@@ -12,22 +12,7 @@ export const __getPostCard = createAsyncThunk(
   "getPostCard",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.get(`${url}/posts`);
-      console.log(data);
-      return thunkAPI.fulfillWithValue(data);
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-);
-
-//카테고리 별 조회
-export const __getCategory = createAsyncThunk(
-  "getCategory",
-  async (payload, thunkAPI) => {
-    try {
-      const { data } = await axios.get(`${url}/posts/${payload}`);
-      console.log(data);
+      const { data } = await axios.get(`https://qkero407.shop/posts`);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -43,17 +28,8 @@ const postSlice = createSlice({
     // 메인페이지 포스트 카드 get
     [__getPostCard.fulfilled]: (state, action) => {
       state.data = action.payload;
-      console.log(state.data);
     },
     [__getPostCard.rejected]: (state, action) => {
-      alert(action.payload);
-    },
-    [__getCategory.fulfilled]: (state, action) => {
-      //console.log(action.payload);
-      state.data = action.payload;
-      //console.log(current(state));
-    },
-    [__getCategory.rejected]: (state, action) => {
       alert(action.payload);
     },
   },

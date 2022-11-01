@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { __getCategory } from "../redux/modules/postSlice";
+import { __getCategory } from "../redux/modules/categorySlice";
 import Layout from "../components/common/Layout";
 import Sidebar from "../components/Sidebar";
 import PostCard from "../components/PostCard";
@@ -19,7 +19,7 @@ const Category = () => {
     dispatch(__getCategory(id));
   }, [dispatch, id]);
 
-  const { data } = useSelector((state) => state.post);
+  const { data } = useSelector((state) => state.category);
   console.log(data);
 
   return (
@@ -29,7 +29,7 @@ const Category = () => {
         <Content>
           <Tag>
             {data?.map((post) => (
-              <TagBtn key={post.postId} post={post} />
+              <TagBtn key={post.postId} post={post} id={id} />
             ))}
           </Tag>
           <PostBox>

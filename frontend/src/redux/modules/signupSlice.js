@@ -17,7 +17,6 @@ export const __signUp = createAsyncThunk(
       const { data } = await axios.post(`${url}/users/signUp`, payload, {
         headers: { "Content-Type": `application/json` },
       });
-      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -59,7 +58,6 @@ const signupSlice = createSlice({
       alert(action.payload);
     },
     [__idDupCheck.rejected]: (state, action) => {
-      console.log(action.error);
       alert(action.payload);
     },
   },

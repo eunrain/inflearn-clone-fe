@@ -16,7 +16,7 @@ export const __patchheart = createAsyncThunk(
     const token = localStorage.getItem("token");
     console.log(payload);
     try {
-      const { data } = await axios.patch(
+      const { data } = await axios.post(
         `https://qkero407.shop/feature/likes/${payload}`,
         payload,
         {
@@ -26,7 +26,6 @@ export const __patchheart = createAsyncThunk(
       );
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
-      console.log(error.response.data.error);
       return thunkAPI.rejectWithValue(error.response.data.error);
     }
   }
@@ -39,7 +38,6 @@ const heartSlice = createSlice({
   extraReducers: {
     [__patchheart.fulfilled]: (state, action) => {
       state.message = action.payload;
-      console.log(state.message);
     },
     [__patchheart.rejected]: (state, action) => {
       state.isLoading = true;

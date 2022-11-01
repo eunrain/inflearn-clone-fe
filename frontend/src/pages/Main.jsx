@@ -36,7 +36,6 @@ const Main = () => {
               <PostCard key={post.postId} post={post} />
             ))}
           </PostBox>
-          <Chat1 />
         </Content>
         {isInquiry ? (
           <Chat1 />

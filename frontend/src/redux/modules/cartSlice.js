@@ -16,7 +16,7 @@ export const __patchcart = createAsyncThunk(
     const token = localStorage.getItem("token");
     console.log(payload);
     try {
-      const { data } = await axios.patch(
+      const { data } = await axios.post(
         `https://qkero407.shop/feature/likes/${payload}`,
         payload,
         {
@@ -39,7 +39,6 @@ const cartSlice = createSlice({
   extraReducers: {
     [__patchcart.fulfilled]: (state, action) => {
       state.message = action.payload;
-      console.log(state.message);
     },
     [__patchcart.rejected]: (state, action) => {
       state.isLoading = true;
