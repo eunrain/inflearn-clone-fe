@@ -59,10 +59,6 @@ const PostCard = ({ post }) => {
               size="30"
             />
           )}
-          {/* <BsSuitHeart className="emLogo" size="28" />
-          <BsSuitHeartFill className="fillLogo" size="28" /> */}
-          {/* <BsCartPlus className="emCart" size="30" />
-          <BsCartXFill className="fillCart" size="30" /> */}
         </HoverIcons>
       </StPostCard2>
       <StPostCard1>

@@ -14,7 +14,6 @@ export const __patchheart = createAsyncThunk(
   "heart",
   async (payload, thunkAPI) => {
     const token = localStorage.getItem("token");
-    console.log(token);
     try {
       const { data } = await axios.post(
         `${url}/feature/likes/${payload}`,
