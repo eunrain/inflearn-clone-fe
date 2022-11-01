@@ -138,8 +138,7 @@ const HoverTitle = styled.div`
 
 const HoverDescrip = styled.div`
   width: 290px;
-  max-height: 180px;
-  background-color: red;
+  max-height: 200px;
   white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -151,6 +150,8 @@ const HoverDescrip = styled.div`
 const HoverTag = styled.div`
   width: 290px;
   height: 55px;
+  margin-top: 10px;
+  color: skyblue;
 `;
 
 const HoverIcons = styled.div`

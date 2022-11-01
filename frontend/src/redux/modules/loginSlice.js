@@ -29,7 +29,6 @@ export const __login = createAsyncThunk("login", async (payload, thunkAPI) => {
     localSet.setItem("loginId", loginId);
     return thunkAPI.fulfillWithValue(data);
   } catch (error) {
-    console.log(error.response.data.error);
     return thunkAPI.rejectWithValue(error.response.data.error);
   }
 });
@@ -43,7 +42,6 @@ const loginSlice = createSlice({
       alert("로그인에 성공하였습니다.");
     },
     [__login.rejected]: (state, action) => {
-      console.log(action.error);
       state.isLoading = true;
       alert(action.payload);
     },
