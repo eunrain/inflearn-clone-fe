@@ -28,7 +28,6 @@ const Signup = () => {
     passwordCheck: yup
       .string()
       .oneOf([yup.ref("password")], "비밀번호가 일치하지 않습니다."),
-    //.oneOf([yup.ref("password"), null], "비밀번호가 일치하지 않습니다."),
   });
 
   const {
@@ -74,12 +73,7 @@ const Signup = () => {
                     중복 확인
                   </StBtnCheck>
                 </StId>
-                <input
-                  type="id"
-                  placeholder="id"
-                  // onChange={onChange}
-                  {...register("id")}
-                />
+                <input type="id" placeholder="id" {...register("id")} />
                 <StErrMsg>{errors.id && <p>{errors.id.message}</p>}</StErrMsg>
               </div>
 
@@ -99,7 +93,7 @@ const Signup = () => {
                 <div>
                   <p>비밀번호 확인</p>
                   <input
-                    type="passwordCheck"
+                    type="password"
                     placeholder="*****"
                     {...register("passwordCheck")}
                   />

@@ -3,10 +3,10 @@ import styled from "styled-components";
 import Layout from "../components/common/Layout";
 import Sidebar from "../components/Sidebar";
 import PostCard from "../components/PostCard";
-import green from "../img/inflearn_green.png";
 import { useDispatch, useSelector } from "react-redux";
 import { __getPostCard } from "../redux/modules/postSlice";
 import TagBtn from "../components/common/TagBtn";
+import InquiryBtn from "../components/common/InquiryBtn";
 
 const Main = () => {
   const { data } = useSelector((state) => state.post);
@@ -33,10 +33,7 @@ const Main = () => {
             ))}
           </PostBox>
         </Content>
-        <Inquiry>
-          <span>문의하기</span>
-          <img alt="인프런 상담 버튼" src={green} />
-        </Inquiry>
+        <InquiryBtn />
       </Container>
     </Layout>
   );
@@ -67,31 +64,4 @@ const PostBox = styled.div`
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-evenly;
-`;
-
-const Inquiry = styled.button`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  bottom: 40px;
-  right: 35px;
-  width: 195px;
-  height: 75px;
-  cursor: pointer;
-  border: 1px solid #e4e4e4;
-  border-radius: 40px;
-  box-shadow: 0 5px 10px #efeff0;
-  background-color: white;
-
-  span {
-    margin-left: 30px;
-    font-size: 19px;
-    font-weight: 600;
-  }
-  img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-  }
 `;

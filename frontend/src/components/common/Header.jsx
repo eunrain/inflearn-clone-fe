@@ -6,6 +6,7 @@ import Modal from "../common/Modal";
 import logo from "../../img/logologo.png";
 import { BsCart3 } from "react-icons/bs";
 import { IoLogOutOutline } from "react-icons/io5";
+
 const Header = () => {
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
@@ -31,7 +32,7 @@ const Header = () => {
   return (
     <div>
       <StHeader>
-        <StLogo src={logo} />
+        <StLogo art="헤더 로고" src={logo} onClick={() => navigate("/")} />
 
         <div>
           {!loginId ? (
@@ -107,5 +108,3 @@ const StBtn = styled.div`
 const BucketBtn = styled.div`
   margin-right: 10px;
 `;
-
-const Stuser = styled.div``;

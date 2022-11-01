@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import img from "../../img/logo.png";
+import img from "../../img/logologo.png";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { __login } from "../../redux/modules/loginSlice";
 import { useNavigate } from "react-router-dom";
+import { BsXLg } from "react-icons/bs";
 
 function Modal(props) {
   const navigate = useNavigate();
@@ -43,17 +44,19 @@ function Modal(props) {
         <ModalBox>
           <LogoBox>
             <img alt="로고 이미지" src={img} />
-            <div onClick={props.closemodal}>X</div>
+            <div onClick={props.closemodal}>
+              <BsXLg />
+            </div>
           </LogoBox>
           <InputBox>
             <form onSubmit={handleSubmit(submitForm)}>
               <div>
-                <input type="text" placeholder="아이디" {...register("id")} />
+                <input type="id" placeholder="아이디" {...register("id")} />
                 <span>{errors.id && "아이디 형식에 맞지 않습니다😅"}</span>
               </div>
               <div>
                 <input
-                  type="text"
+                  type="password"
                   placeholder="비밀번호"
                   {...register("password")}
                 />
@@ -84,8 +87,8 @@ const ModalBackground = styled.div`
 `;
 
 const ModalBox = styled.div`
-  width: 350px;
-  height: 400px;
+  width: 400px;
+  height: 490px;
   position: absolute;
   top: 50%;
   left: 50%;
