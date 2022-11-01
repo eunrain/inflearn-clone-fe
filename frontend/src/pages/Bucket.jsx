@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../components/common/Layout";
 import styled from "styled-components";
 import { useState } from "react";
+import { __getCart } from "../redux/modules/cartSlice";
+import { useDispatch } from "react-redux";
 
 const Bucket = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(__getCart());
+  }, []);
+
   const data = [
     { id: 0, title: "html강의", price: "10,000원" },
     { id: 1, title: "css 강의", price: "20,000원" },
