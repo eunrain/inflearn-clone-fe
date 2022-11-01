@@ -3,13 +3,17 @@ import styled from "styled-components";
 
 const TagBtn = ({ post }) => {
   return (
-    <div>
+    <Wrap>
       <Btn>{post.stack}</Btn>
-    </div>
+    </Wrap>
   );
 };
 
 export default TagBtn;
+
+const Wrap = styled.div`
+  margin: 0 10px 10px 0;
+`;
 
 const Btn = styled.button`
   width: 100%;
