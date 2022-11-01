@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const TagBtn = ({ post }) => {
+  const [color, setColor] = useState("#b8b8b8");
+  const tabHandler = () => {
+    color === "#b8b8b8" ? setColor("green") : setColor("#b8b8b8");
+  };
   return (
     <Wrap>
-      <Btn>{post.stack}</Btn>
+      <Btn onClick={tabHandler} color={color}>
+        {post.stack}
+      </Btn>
     </Wrap>
   );
 };
@@ -19,7 +25,7 @@ const Btn = styled.button`
   width: 100%;
   height: 100%;
   cursor: pointer;
-  background: #b8b8b8;
+  background-color: ${(props) => props.color};
   color: #fff;
   border: none;
   border-radius: 6px;
