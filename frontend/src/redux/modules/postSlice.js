@@ -12,7 +12,7 @@ export const __getPostCard = createAsyncThunk(
   "getPostCard",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.get(`https://qkero407.shop/posts`);
+      const { data } = await axios.get(`${url}/posts`);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

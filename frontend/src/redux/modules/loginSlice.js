@@ -12,13 +12,9 @@ const url = process.env.REACT_APP_BACK_BASE_URL;
 //로그인
 export const __login = createAsyncThunk("login", async (payload, thunkAPI) => {
   try {
-    const { data } = await axios.post(
-      "https://qkero407.shop/users/login",
-      payload,
-      {
-        headers: { "Content-Type": `application/json` },
-      }
-    );
+    const { data } = await axios.post(`${url}/users/login`, payload, {
+      headers: { "Content-Type": `application/json` },
+    });
 
     const { token } = await data;
     const { loginId } = await data;
