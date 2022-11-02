@@ -80,7 +80,7 @@ const Bucket = () => {
                     ></input>
                     <button>삭제</button>
                   </div>
-                  <span>이미지</span>
+                  <img src={data.thumbnail}></img>
                   <span>{data.title}</span>
                   <span>{data.price}</span>
                 </Content>
@@ -159,4 +159,8 @@ const Content = styled.div`
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid lightgray;
+  img {
+    width: 150px;
+    height: 120px;
+  }
 `;
