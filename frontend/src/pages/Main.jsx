@@ -11,7 +11,7 @@ import Chat1 from "../components/Chat1";
 
 const Main = () => {
   const { data } = useSelector((state) => state.post);
-  console.log(data.category);
+  console.log(data);
 
   const dispatch = useDispatch();
   useEffect(() => {
