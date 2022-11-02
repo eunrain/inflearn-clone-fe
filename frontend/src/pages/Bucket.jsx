@@ -6,20 +6,16 @@ import { __getHeart } from "../redux/modules/heartSlice";
 import { __getCart } from "../redux/modules/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Likebar from "../components/Likebar";
+import { useSelector } from "react-redux";
 
 const Bucket = () => {
+  const { data } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(__getHeart());
+    dispatch(__getCart());
   }, []);
 
-  const data = [
-    { id: 0, title: "html강의", price: "10,000원" },
-    { id: 1, title: "css 강의", price: "20,000원" },
-    { id: 2, title: "javascript 강의", price: "30,000원" },
-    { id: 3, title: "react 강의", price: "40,000원" },
-  ];
   // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
 
@@ -62,27 +58,28 @@ const Bucket = () => {
                 onChange={(e) => handleAllCheck(e.target.checked)}
                 // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
                 checked={checkItems.length === data.length ? true : false}
-              ></input>
+              />
               <span>전체선택</span>
             </CheckBox>
             <ClassList>
               {data?.map((data, key) => (
-                <Content key={key}>
+                <Content>
                   <div>
                     <input
+                      key={key}
                       type="checkbox"
-                      name={`select-${data.id}`}
+                      name={`select-${data.postId}`}
                       onChange={(e) =>
-                        handleSingleCheck(e.target.checked, data.id)
+                        handleSingleCheck(e.target.checked, data.postId)
                       }
                       // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
-                      checked={checkItems.includes(data.id) ? true : false}
+                      checked={checkItems.includes(data.postId) ? true : false}
                     ></input>
                     <button>삭제</button>
                   </div>
                   <img src={data.thumbnail}></img>
-                  <span>{data.title}</span>
-                  <span>{data.price}</span>
+                  <Title>{data.title}</Title>
+                  <div>{data.price}</div>
                 </Content>
               ))}
             </ClassList>
@@ -163,4 +160,8 @@ const Content = styled.div`
     width: 150px;
     height: 120px;
   }
+`;
+const Title = styled.div`
+  width: 30%;
+  text-align: center;
 `;
