@@ -95,15 +95,15 @@ const Container = styled.div`
   width: 1200px;
   margin: 0 auto;
   p {
-    margin-top: 50px;
-    width: 130px;
-    height: 30px;
-    line-height: 30px;
-    border-bottom: 2px dotted #00c471;
-    font-size: 14px;
   }
   h2 {
     margin-top: 50px;
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 2px dotted #00c471;
+    font-size: 20px;
+    font-weight: 600;
   }
 `;
 
