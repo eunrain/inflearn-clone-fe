@@ -10,9 +10,9 @@ const initialState = {
 
 const url = process.env.REACT_APP_BACK_BASE_URL;
 
-//카트 patch
-export const __patchcart = createAsyncThunk(
-  "cart",
+//카트 post
+export const __postCart = createAsyncThunk(
+  "postcart",
   async (payload, thunkAPI) => {
     const token = localStorage.getItem("token");
     console.log(payload);
@@ -57,14 +57,15 @@ const cartSlice = createSlice({
   initialState,
   reducer: {},
   extraReducers: {
-    [__patchcart.fulfilled]: (state, action) => {
+    [__postCart.fulfilled]: (state, action) => {
       state.message = action.payload;
     },
-    [__patchcart.rejected]: (state, action) => {
+    [__postCart.rejected]: (state, action) => {
       alert(action.payload);
     },
     [__getCart.fulfilled]: (state, action) => {
       state.data = action.payload;
+      console.log(state.data);
     },
     [__getCart.rejected]: (state, action) => {
       alert(action.payload);

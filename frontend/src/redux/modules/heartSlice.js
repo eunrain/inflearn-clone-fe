@@ -2,16 +2,17 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
+  data: [],
+  likes: [],
   isLoading: false,
   error: null,
   message: "",
-  data: [],
 };
 
 const url = process.env.REACT_APP_BACK_BASE_URL;
 
 //좋아요 post
-export const __patchheart = createAsyncThunk(
+export const __postHeart = createAsyncThunk(
   "getheart",
   async (payload, thunkAPI) => {
     console.log(payload);
@@ -32,12 +33,12 @@ export const __patchheart = createAsyncThunk(
   }
 );
 
-//좋아요 조회
+
+//하트 get
 export const __getHeart = createAsyncThunk(
   "heart",
   async (payload, thunkAPI) => {
     const token = localStorage.getItem("token");
-    console.log(token);
     try {
       const { data } = await axios.get(`${url}/users/likes`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -55,10 +56,10 @@ const heartSlice = createSlice({
   initialState,
   reducer: {},
   extraReducers: {
-    [__patchheart.fulfilled]: (state, action) => {
+    [__postHeart.fulfilled]: (state, action) => {
       state.message = action.payload;
     },
-    [__patchheart.rejected]: (state, action) => {
+    [__postHeart.rejected]: (state, action) => {
       state.isLoading = true;
       alert(action.payload);
     },
