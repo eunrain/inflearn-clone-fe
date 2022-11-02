@@ -34,7 +34,7 @@ const PostCard = ({ post }) => {
           ) : (
             <BsSuitHeartFill
               className="fillLogo"
-              color="red"
+              color="rgb(255, 56, 92)"
               size="28"
               onClick={() => {
                 setHeart(false);
