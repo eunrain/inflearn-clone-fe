@@ -5,12 +5,10 @@ import {
   BsSuitHeart,
   BsCartPlus,
   BsCartXFill,
-  
 } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { __postHeart } from "../redux/modules/heartSlice";
 import { __postCart } from "../redux/modules/cartSlice";
-
 
 const PostCard = ({ post }) => {
   const dispatch = useDispatch();
@@ -18,7 +16,6 @@ const PostCard = ({ post }) => {
   const [cart, setCart] = useState(false);
   const { likes } = useSelector((state) => state.post);
   const { buckets } = useSelector((state) => state.post);
-
 
   return (
     <Container>
