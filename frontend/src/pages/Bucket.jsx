@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { __getCart } from "../redux/modules/cartSlice";
 import { useDispatch } from "react-redux";
+import Likebar from "../components/Likebar";
 
 const Bucket = () => {
   const dispatch = useDispatch();
@@ -49,42 +50,47 @@ const Bucket = () => {
 
   return (
     <Layout>
-      <Container>
-        <h2>{loginId}님의 수강바구니</h2>
-        <Wrap>
-          <CheckBox>
-            <input
-              type="checkbox"
-              name="select-all"
-              onChange={(e) => handleAllCheck(e.target.checked)}
-              // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
-              checked={checkItems.length === data.length ? true : false}
-            ></input>
-            <span>전체선택</span>
-          </CheckBox>
-          <ClassList>
-            {data?.map((data, key) => (
-              <Content key={key}>
-                <div>
-                  <input
-                    type="checkbox"
-                    name={`select-${data.id}`}
-                    onChange={(e) =>
-                      handleSingleCheck(e.target.checked, data.id)
-                    }
-                    // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
-                    checked={checkItems.includes(data.id) ? true : false}
-                  ></input>
-                  <button>삭제</button>
-                </div>
-                <span>이미지</span>
-                <span>{data.title}</span>
-                <span>{data.price}</span>
-              </Content>
-            ))}
-          </ClassList>
-        </Wrap>
-      </Container>
+      <StWrap>
+        <Container>
+          <h2>{loginId}님의 수강바구니</h2>
+          <Wrap>
+            <CheckBox>
+              <input
+                type="checkbox"
+                name="select-all"
+                onChange={(e) => handleAllCheck(e.target.checked)}
+                // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
+                checked={checkItems.length === data.length ? true : false}
+              ></input>
+              <span>전체선택</span>
+            </CheckBox>
+            <ClassList>
+              {data?.map((data, key) => (
+                <Content key={key}>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name={`select-${data.id}`}
+                      onChange={(e) =>
+                        handleSingleCheck(e.target.checked, data.id)
+                      }
+                      // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
+                      checked={checkItems.includes(data.id) ? true : false}
+                    ></input>
+                    <button>삭제</button>
+                  </div>
+                  <span>이미지</span>
+                  <span>{data.title}</span>
+                  <span>{data.price}</span>
+                </Content>
+              ))}
+            </ClassList>
+          </Wrap>
+        </Container>
+        <BarWrap>
+          <Likebar />
+        </BarWrap>
+      </StWrap>
     </Layout>
   );
 };
@@ -107,6 +113,15 @@ const Container = styled.div`
   }
 `;
 
+const StWrap = styled.div`
+  display: flex;
+  width: 1500px;
+  margin: 0 auto;
+`;
+
+const BarWrap = styled.div`
+  margin: 50px 0 0 50px;
+`;
 const Wrap = styled.div`
   margin-top: 50px;
 `;
