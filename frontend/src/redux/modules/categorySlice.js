@@ -3,6 +3,8 @@ import axios from "axios";
 
 const initialState = {
   data: [],
+  likes: [],
+  buckets: [],
   isLoading: false,
   error: null,
   message: "",
@@ -11,11 +13,31 @@ const initialState = {
 const url = process.env.REACT_APP_BACK_BASE_URL;
 
 //카테고리 별 조회
+// export const __getCategory = createAsyncThunk(
+//   "getCategory",
+//   async (payload, thunkAPI) => {
+//     const token = localStorage.getItem("token");
+//     try {
+//       const { data } = await axios.get(`${url}/posts/${payload}`, {
+//         headers: { Authorization: `Bearer ${token}` },
+//       });
+//       console.log(data);
+//       return thunkAPI.fulfillWithValue(data);
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error);
+//     }
+//   }
+// );
+//카테고리 별 조회
 export const __getCategory = createAsyncThunk(
   "getCategory",
   async (payload, thunkAPI) => {
+    const token = localStorage.getItem("token");
     try {
-      const { data } = await axios.get(`${url}/posts/${payload}`);
+      const { data } = await axios.get(`${url}/posts/${payload}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -47,7 +69,9 @@ const categorySlice = createSlice({
   extraReducers: {
     //category
     [__getCategory.fulfilled]: (state, action) => {
-      state.data = action.payload;
+      state.data = action.payload.data;
+      state.likes = action.payload.likes;
+      state.buckets = action.payload.buckets;
     },
     [__getCategory.rejected]: (state, action) => {
       alert(action.payload);
