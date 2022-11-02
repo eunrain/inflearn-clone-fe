@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Layout from "../components/common/Layout";
 import styled from "styled-components";
 import { useState } from "react";
-import { __getHeart } from "../redux/modules/heartSlice";
 import { __getCart } from "../redux/modules/cartSlice";
 import { useDispatch } from "react-redux";
 

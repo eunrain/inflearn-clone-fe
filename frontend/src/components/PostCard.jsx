@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import {
   BsSuitHeartFill,
@@ -6,14 +6,17 @@ import {
   BsCartPlus,
   BsCartXFill,
 } from "react-icons/bs";
-import { useDispatch } from "react-redux";
-import { __patchheart } from "../redux/modules/heartSlice";
-import { __patchcart } from "../redux/modules/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { __postHeart } from "../redux/modules/heartSlice";
+import { __postCart } from "../redux/modules/cartSlice";
 
 const PostCard = ({ post }) => {
   const dispatch = useDispatch();
   const [heart, setHeart] = useState(false);
   const [cart, setCart] = useState(false);
+
+  const { likes } = useSelector((state) => state.post);
+  const { buckets } = useSelector((state) => state.post);
 
   return (
     <Container>
@@ -22,41 +25,37 @@ const PostCard = ({ post }) => {
         <HoverDescrip>{post.description}</HoverDescrip>
         <HoverTag>{post.stack}</HoverTag>
         <HoverIcons>
-          {heart ? (
-            <BsSuitHeartFill
+          {likes.indexOf(post.postId) === -1 ? (
+            <BsSuitHeart
+              size="28"
               onClick={() => {
-                setHeart(false);
+                dispatch(__postHeart(post.postId));
               }}
+            />
+          ) : (
+            <BsSuitHeartFill
               className="fillLogo"
               color="red"
               size="28"
-            />
-          ) : (
-            <BsSuitHeart
               onClick={() => {
-                setHeart(true);
-                dispatch(__patchheart(post.postId));
+                setHeart(false);
+                dispatch(__postHeart(post.postId));
               }}
-              className="emLogo"
-              size="28"
             />
           )}
-          {cart ? (
-            <BsCartXFill
-              onClick={() => {
-                setCart(false);
-              }}
-              className="fillCart"
+          {buckets.indexOf(post.postId) === -1 ? (
+            <BsCartPlus
               size="30"
+              onClick={() => {
+                dispatch(__postCart(post.postId));
+              }}
             />
           ) : (
-            <BsCartPlus
-              onClick={() => {
-                setCart(true);
-                dispatch(__patchcart(post.postId));
-              }}
-              className="emCart"
+            <BsCartXFill
               size="30"
+              onClick={() => {
+                dispatch(__postCart(post.postId));
+              }}
             />
           )}
         </HoverIcons>
