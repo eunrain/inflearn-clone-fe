@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Layout from "../components/common/Layout";
 import styled from "styled-components";
 import { useState } from "react";
+import { __getHeart } from "../redux/modules/heartSlice";
 import { __getCart } from "../redux/modules/cartSlice";
 import { useDispatch } from "react-redux";
 import Likebar from "../components/Likebar";
@@ -10,7 +11,7 @@ const Bucket = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(__getCart());
+    dispatch(__getHeart());
   }, []);
 
   const data = [
@@ -100,8 +101,7 @@ export default Bucket;
 const Container = styled.div`
   width: 1200px;
   margin: 0 auto;
-  p {
-  }
+
   h2 {
     margin-top: 50px;
     width: 200px;
