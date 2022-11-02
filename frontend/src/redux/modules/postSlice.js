@@ -27,7 +27,7 @@ const postSlice = createSlice({
   extraReducers: {
     // 메인페이지 포스트 카드 get
     [__getPostCard.fulfilled]: (state, action) => {
-      state.data = action.payload;
+      state.data = action.payload.data;
     },
     [__getPostCard.rejected]: (state, action) => {
       alert(action.payload);

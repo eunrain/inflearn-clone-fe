@@ -14,6 +14,7 @@ const url = process.env.REACT_APP_BACK_BASE_URL;
 export const __patchheart = createAsyncThunk(
   "getheart",
   async (payload, thunkAPI) => {
+    console.log(payload);
     const token = localStorage.getItem("token");
     try {
       const { data } = await axios.post(
@@ -31,6 +32,7 @@ export const __patchheart = createAsyncThunk(
   }
 );
 
+//좋아요 조회
 export const __getHeart = createAsyncThunk(
   "heart",
   async (payload, thunkAPI) => {

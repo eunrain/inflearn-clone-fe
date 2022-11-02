@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   BsSuitHeartFill,
@@ -7,13 +7,17 @@ import {
   BsCartXFill,
 } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { __patchheart } from "../redux/modules/heartSlice";
+import { __getHeart, __patchheart } from "../redux/modules/heartSlice";
 import { __patchcart } from "../redux/modules/cartSlice";
 
 const PostCard = ({ post }) => {
   const dispatch = useDispatch();
   const [heart, setHeart] = useState(false);
   const [cart, setCart] = useState(false);
+
+  // useEffect(() => {
+  //   dispatch(__getHeart(), [dispatch]);
+  // });
 
   return (
     <Container>

@@ -18,7 +18,7 @@ export const __patchcart = createAsyncThunk(
     console.log(payload);
     try {
       const { data } = await axios.post(
-        `${url}/feature/likes/${payload}`,
+        `${url}/feature/buckets/${payload}`,
         payload,
         {
           headers: { Authorization: `Bearer ${token}` },
