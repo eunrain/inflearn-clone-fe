@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { __getHeart } from "../redux/modules/heartSlice";
 import { __getCart } from "../redux/modules/cartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Likebar from "../components/Likebar";
 
 const Bucket = () => {
