@@ -35,7 +35,7 @@ const Header = () => {
       <StHeader>
         <StLogo art="헤더 로고" src={logo} onClick={() => navigate("/")} />
         <StMenu>
-          <div onClick={moveHandler}>강의</div>
+          <div>강의</div>
           <div>로드맵</div>
           <div>멘토링</div>
           <div>커뮤니티</div>
@@ -53,9 +53,9 @@ const Header = () => {
               <div>{loginId}님 환영합니다!</div>
               <StBtn>
                 <BucketBtn>
-                  <BsCart3 size="20" onClick={() => navigate("/bucket")} />
+                  <BsCart3 size="30" onClick={() => navigate("/bucket")} />
                 </BucketBtn>
-                <IoLogOutOutline size="22" onClick={() => onLogout()} />
+                <IoLogOutOutline size="30" onClick={() => onLogout()} />
               </StBtn>
             </StBtnWrap>
           )}
@@ -75,10 +75,6 @@ const StHeader = styled.div`
 `;
 
 const StMenu = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 10px;
-  transform: translate(-50%);
   display: flex;
   justify-content: space-between;
   height: 100px;
@@ -94,23 +90,14 @@ const StMenu = styled.div`
   }
 `;
 const StLogo = styled.img`
+  margin: 10px 0 0 50px;
   width: 200px;
   height: 70px;
   cursor: pointer;
-  margin-left: 150px;
 `;
 
 const StBtnWrap = styled.div`
-  display: flex;
-  margin-right: 150px;
-  font-size: 13px;
-  position: absolute;
-  right: 25px;
-  top: 62px;
-  div {
-    margin-right: 10px;
-    text-align: center;
-  }
+  margin: 30px 100px 20px 0;
 `;
 
 const StBtnlogin = styled.button`
@@ -137,9 +124,7 @@ const StBtnsignup = styled.button`
 
 const StBtn = styled.div`
   display: flex;
-  margin-right: 150px;
   cursor: pointer;
-  margin-right: 10px;
 `;
 
 const BucketBtn = styled.div`
