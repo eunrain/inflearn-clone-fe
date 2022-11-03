@@ -33,6 +33,7 @@ const Login = () => {
     dispatch(__login(loginBody)).then((response) => {
       if (response.payload.token) {
         navigate("/");
+        window.location.reload();
       }
     });
 
