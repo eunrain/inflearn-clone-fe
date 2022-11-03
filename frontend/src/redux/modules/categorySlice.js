@@ -10,7 +10,7 @@ const initialState = {
 
 const url = process.env.REACT_APP_BACK_BASE_URL;
 
-//카테고리 별 조회
+//카테고리 get
 export const __getCategory = createAsyncThunk(
   "getCategory",
   async (payload, thunkAPI) => {
