@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import { BsXLg } from "react-icons/bs";
 
 function Modal(props) {
-  const navigate = useNavigate();
   const schema = yup.object().shape({
     id: yup.string().min(5).max(15).required(),
     password: yup.string().min(5).max(15).required(),

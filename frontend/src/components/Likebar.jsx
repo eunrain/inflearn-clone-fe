@@ -57,7 +57,6 @@ const StList = styled.div`
 `;
 
 const StTitle = styled.div`
-  border: 1px solid;
   border-radius: 10px;
   border: 1px solid lightgray;
   margin: 20px auto;
