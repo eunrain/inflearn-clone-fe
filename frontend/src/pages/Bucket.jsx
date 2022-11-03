@@ -111,7 +111,7 @@ const Container = styled.div`
 
 const StWrap = styled.div`
   display: flex;
-  width: 1500px;
+  width: 1200px;
   margin: 0 auto;
 `;
 
