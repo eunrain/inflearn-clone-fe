@@ -64,7 +64,8 @@ const Bucket = () => {
               <span>전체선택</span>
             </CheckBox>
             <ClassList>
-              {data?.map((data, key) => (
+
+              {data?.map((data) => (
                 <Content key={data.postId}>
                   <div>
                     {/* <Label> */}

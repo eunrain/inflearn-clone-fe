@@ -39,6 +39,7 @@ const postSlice = createSlice({
       state.likes = action.payload.likes;
       state.buckets = action.payload.buckets;
       state.stacklist = action.payload.stacklist;
+      console.log(state.data);
     },
     [__getPostCard.rejected]: (state, action) => {
       alert(action.payload);

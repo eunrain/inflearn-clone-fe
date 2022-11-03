@@ -30,28 +30,31 @@ export const __getCategory = createAsyncThunk(
 );
 
 //stack get
-export const __getStack = createAsyncThunk("tag", async (payload, thunkAPI) => {
-  console.log(payload);
-  try {
-    const { data } = await axios.get(
-      `${url}/posts/${payload.category}/${payload.stack}`,
-      payload,
-      {
-        headers: { "Content-Type": `application/json` },
-      }
-    );
-    return thunkAPI.fulfillWithValue(data);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data.error);
+export const __getStack = createAsyncThunk(
+  "getStack",
+  async (payload, thunkAPI) => {
+    const token = localStorage.getItem("token");
+    try {
+      const { data } = await axios.get(
+        `${url}/posts/${payload.category}/${payload.stack}`,
+        payload,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.error);
+    }
   }
-});
+);
 
 const categorySlice = createSlice({
   name: "category",
   initialState,
   reducer: {},
   extraReducers: {
-    //category
+    //getCategory
     [__getCategory.fulfilled]: (state, action) => {
       state.data = action.payload.postdata;
       state.likes = action.payload.likes;
@@ -60,9 +63,10 @@ const categorySlice = createSlice({
     [__getCategory.rejected]: (state, action) => {
       alert(action.payload);
     },
-    //stack
+    //getStack
     [__getStack.fulfilled]: (state, action) => {
-      state.data = action.payload;
+      console.log(action.payload);
+      state.data = action.payload.data;
     },
     [__getStack.rejected]: (state, action) => {
       state.isLoading = true;

@@ -13,9 +13,8 @@ const url = process.env.REACT_APP_BACK_BASE_URL;
 
 //좋아요 post
 export const __postHeart = createAsyncThunk(
-  "getheart",
+  "postheart",
   async (payload, thunkAPI) => {
-    console.log(payload);
     const token = localStorage.getItem("token");
     try {
       const { data } = await axios.post(
@@ -32,7 +31,6 @@ export const __postHeart = createAsyncThunk(
     }
   }
 );
-
 
 //하트 get
 export const __getHeart = createAsyncThunk(

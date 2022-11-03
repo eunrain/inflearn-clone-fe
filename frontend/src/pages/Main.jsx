@@ -7,11 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { __getPostCard } from "../redux/modules/postSlice";
 import TagBtn from "../components/common/TagBtn";
 import InquiryBtn from "../components/common/InquiryBtn";
-import Chat1 from "../components/Chat1";
+import Chat1 from "../components/chat/Chat1";
 
 const Main = () => {
-  const { data } = useSelector((state) => state.post);
-  console.log(data);
+  const { data, stacklist } = useSelector((state) => state.post);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -26,8 +25,8 @@ const Main = () => {
         <Sidebar />
         <Content>
           <Tag>
-            {data?.map((post) => (
-              <TagBtn key={post.postId} post={post} />
+            {stacklist?.map((stack) => (
+              <TagBtn key={stack} stack={stack} />
             ))}
           </Tag>
           <PostBox>
