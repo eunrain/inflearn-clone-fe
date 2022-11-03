@@ -78,7 +78,7 @@ const Bucket = () => {
                   </div>
                   <img alt="강의 사진" src={data.thumbnail}></img>
                   <Title>{data.title}</Title>
-                  <div>{data.price}</div>
+                  <div>{Number(data.price).toLocaleString("kr")}</div>
                 </Content>
               ))}
             </ClassList>
