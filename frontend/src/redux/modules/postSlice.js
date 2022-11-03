@@ -18,7 +18,6 @@ export const __getPostCard = createAsyncThunk(
         const { data } = await axios.get(`${url}/posts`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        console.log(data);
         return thunkAPI.fulfillWithValue(data);
       } catch (error) {
         return thunkAPI.rejectWithValue(error);
@@ -26,7 +25,6 @@ export const __getPostCard = createAsyncThunk(
     } else {
       try {
         const { data } = await axios.get(`${url}/posts`);
-        console.log(data);
         return thunkAPI.fulfillWithValue(data);
       } catch (error) {
         return thunkAPI.rejectWithValue(error);
