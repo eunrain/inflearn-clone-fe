@@ -15,14 +15,22 @@ export const __getCategory = createAsyncThunk(
   "getCategory",
   async (payload, thunkAPI) => {
     const token = localStorage.getItem("token");
-    try {
-      const { data } = await axios.get(`${url}/posts/${payload}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      console.log(data);
-      return thunkAPI.fulfillWithValue(data);
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+    if (token) {
+      try {
+        const { data } = await axios.get(`${url}/posts/${payload}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        return thunkAPI.fulfillWithValue(data);
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error);
+      }
+    } else {
+      try {
+        const { data } = await axios.get(`${url}/posts/${payload}`);
+        return thunkAPI.fulfillWithValue(data);
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error);
+      }
     }
   }
 );
