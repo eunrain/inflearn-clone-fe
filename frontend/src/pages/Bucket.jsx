@@ -95,7 +95,7 @@ const Bucket = () => {
 export default Bucket;
 
 const Container = styled.div`
-  width: 1200px;
+  width: 900px;
   margin: 0 auto;
 
   h2 {
