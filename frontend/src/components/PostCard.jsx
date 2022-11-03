@@ -14,8 +14,11 @@ const PostCard = ({ post }) => {
   const dispatch = useDispatch();
   const [heart, setHeart] = useState(false);
   const [cart, setCart] = useState(false);
-  const { likes } = useSelector((state) => state.post);
-  const { buckets } = useSelector((state) => state.post);
+  // const { likes } = useSelector((state) => state.post);
+  // console.log(likes);
+  // const { buckets } = useSelector((state) => state.post);
+
+  // const [currentLikes, setCurrentLikes] = useState(likes);
 
   return (
     <Container>
@@ -24,16 +27,9 @@ const PostCard = ({ post }) => {
         <HoverDescrip>{post.description}</HoverDescrip>
         <HoverTag>{post.stack}</HoverTag>
         <HoverIcons>
-          {likes.indexOf(post.postId) === -1 ? (
-            <BsSuitHeart
-              size="28"
-              onClick={() => {
-                dispatch(__postHeart(post.postId));
-              }}
-            />
-          ) : (
+          {post.isHeart ? <BsSuitHeartFill /> : <BsSuitHeart />}
+          {heart ? (
             <BsSuitHeartFill
-              className="fillLogo"
               color="rgb(255, 56, 92)"
               size="28"
               onClick={() => {
@@ -41,18 +37,28 @@ const PostCard = ({ post }) => {
                 dispatch(__postHeart(post.postId));
               }}
             />
+          ) : (
+            <BsSuitHeart
+              size="28"
+              onClick={() => {
+                setHeart(true);
+                dispatch(__postHeart(post.postId));
+              }}
+            />
           )}
-          {buckets.indexOf(post.postId) === -1 ? (
-            <BsCartPlus
+          {cart || post.isCart === true ? (
+            <BsCartXFill
               size="30"
               onClick={() => {
+                setCart(false);
                 dispatch(__postCart(post.postId));
               }}
             />
           ) : (
-            <BsCartXFill
+            <BsCartPlus
               size="30"
               onClick={() => {
+                setCart(true);
                 dispatch(__postCart(post.postId));
               }}
             />

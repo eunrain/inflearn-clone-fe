@@ -35,8 +35,6 @@ function Modal(props) {
         props.closemodal();
       }
     });
-
-    console.log(JSON.stringify(loginBody));
   };
   return (
     <>
