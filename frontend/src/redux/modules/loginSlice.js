@@ -39,7 +39,7 @@ const loginSlice = createSlice({
     },
     [__login.rejected]: (state, action) => {
       state.isLoading = true;
-      alert(action.payload);
+      alert(action.error);
     },
   },
 });
