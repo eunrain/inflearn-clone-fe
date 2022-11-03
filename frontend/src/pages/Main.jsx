@@ -10,8 +10,8 @@ import InquiryBtn from "../components/common/InquiryBtn";
 import Chat1 from "../components/chat/Chat1";
 
 const Main = () => {
-  const { data, stacklist } = useSelector((state) => state.post);
-
+  const { data, stack } = useSelector((state) => state.post);
+  console.log(data);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(__getPostCard());
@@ -25,7 +25,7 @@ const Main = () => {
         <Sidebar />
         <Content>
           <Tag>
-            {stacklist?.map((stack) => (
+            {stack?.map((stack) => (
               <TagBtn key={stack} stack={stack} />
             ))}
           </Tag>
@@ -45,13 +45,13 @@ const Main = () => {
 export default Main;
 
 const Container = styled.div`
-  width: 1200px;
+  width: 1500px;
   display: flex;
   margin: 40px auto;
 `;
 
 const Content = styled.div`
-  width: 1200px;
+  width: 1300px;
   margin: 50px auto;
 `;
 

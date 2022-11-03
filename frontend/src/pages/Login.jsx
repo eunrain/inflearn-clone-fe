@@ -42,7 +42,7 @@ const Login = () => {
   return (
     <Container>
       <Wrap>
-        <img src={img} />
+        <img alt="로고" src={img} />
         <span>로그인</span>
         <InputBox>
           <form onSubmit={handleSubmit(submitForm)}>

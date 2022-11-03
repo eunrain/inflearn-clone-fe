@@ -52,23 +52,19 @@ const Bucket = () => {
           <h2>{loginId}님의 수강바구니</h2>
           <Wrap>
             <CheckBox>
-              {/* <Label> */}
               <input
                 type="checkbox"
                 name="select-all"
                 onChange={(e) => handleAllCheck(e.target.checked)}
                 // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
                 checked={checkItems.length === data.length ? true : false}
-              ></input>
-              {/* </Label> */}
+              />
               <span>전체선택</span>
             </CheckBox>
             <ClassList>
-
               {data?.map((data) => (
                 <Content key={data.postId}>
                   <div>
-                    {/* <Label> */}
                     <input
                       type="checkbox"
                       name={`select-${data.postId}`}
@@ -78,10 +74,9 @@ const Bucket = () => {
                       // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
                       checked={checkItems.includes(data.postId) ? true : false}
                     ></input>
-                    {/* </Label> */}
                     <button>삭제</button>
                   </div>
-                  <img src={data.thumbnail}></img>
+                  <img alt="강의 사진" src={data.thumbnail}></img>
                   <Title>{data.title}</Title>
                   <div>{data.price}</div>
                 </Content>
@@ -100,7 +95,7 @@ const Bucket = () => {
 export default Bucket;
 
 const Container = styled.div`
-  width: 900px;
+  width: 1200px;
   margin: 0 auto;
 
   h2 {
@@ -116,7 +111,7 @@ const Container = styled.div`
 
 const StWrap = styled.div`
   display: flex;
-  width: 1200px;
+  width: 1500px;
   margin: 0 auto;
 `;
 
@@ -169,9 +164,3 @@ const Title = styled.div`
   width: 30%;
   text-align: center;
 `;
-
-// const Label = styled.label`
-// input{
-//   display: ;
-// }
-// `;

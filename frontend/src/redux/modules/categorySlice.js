@@ -1,10 +1,8 @@
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
   data: [],
-  likes: [],
-  buckets: [],
   isLoading: false,
   error: null,
   message: "",
@@ -57,15 +55,12 @@ const categorySlice = createSlice({
     //getCategory
     [__getCategory.fulfilled]: (state, action) => {
       state.data = action.payload.postdata;
-      state.likes = action.payload.likes;
-      state.buckets = action.payload.buckets;
     },
     [__getCategory.rejected]: (state, action) => {
       alert(action.payload);
     },
     //getStack
     [__getStack.fulfilled]: (state, action) => {
-      console.log(action.payload);
       state.data = action.payload.data;
     },
     [__getStack.rejected]: (state, action) => {
