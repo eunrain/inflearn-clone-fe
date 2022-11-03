@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
+import styled from "styled-components";
 
 const ChatInput = ({ userName, socket }) => {
   const [chatMessage, setChatMessage] = useState("");
@@ -20,15 +21,37 @@ const ChatInput = ({ userName, socket }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input
-          placeholder="메시지를 입력하세요."
-          value={chatMessage}
-          onChange={onChatMessageChange}
-        />
-        <button>전송</button>
+        <StContainer>
+          <StInput
+            placeholder="메시지를 입력하세요."
+            value={chatMessage}
+            onChange={onChatMessageChange}
+          />
+          <StBtn>전송</StBtn>
+        </StContainer>
       </form>
     </div>
   );
 };
 
 export default ChatInput;
+
+const StContainer = styled.div`
+  display: flex;
+  margin: 0 auto 0 auto;
+`;
+const StInput = styled.input`
+  width: 360px;
+  height: 40px;
+  border-radius: 10px;
+`;
+
+const StBtn = styled.div`
+  width: 65px;
+  height: 40px;
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 40px;
+`;

@@ -15,6 +15,8 @@ const PostCard = ({ post }) => {
   const [heart, setHeart] = useState(false);
   const [cart, setCart] = useState(false);
 
+  const token = localStorage.getItem("token");
+
   return (
     <Container>
       <StPostCard2>
@@ -27,16 +29,22 @@ const PostCard = ({ post }) => {
               color="rgb(255, 56, 92)"
               size="20"
               onClick={() => {
-                setHeart(false);
-                dispatch(__postHeart(post.postId));
+                if (token) {
+                  dispatch(__postHeart(post.postId));
+                } else {
+                  alert("로그인 후 이용해주세요🥲");
+                }
               }}
             />
           ) : (
             <BsSuitHeart
               size="20"
               onClick={() => {
-                setHeart(true);
-                dispatch(__postHeart(post.postId));
+                if (token) {
+                  dispatch(__postHeart(post.postId));
+                } else {
+                  alert("로그인 후 이용해주세요🥲");
+                }
               }}
             />
           )}
@@ -44,16 +52,22 @@ const PostCard = ({ post }) => {
             <BsCartXFill
               size="22"
               onClick={() => {
-                setCart(false);
-                dispatch(__postCart(post.postId));
+                if (token) {
+                  dispatch(__postCart(post.postId));
+                } else {
+                  alert("로그인 후 이용해주세요🥲");
+                }
               }}
             />
           ) : (
             <BsCartPlus
               size="22"
               onClick={() => {
-                setCart(true);
-                dispatch(__postCart(post.postId));
+                if (token) {
+                  dispatch(__postCart(post.postId));
+                } else {
+                  alert("로그인 후 이용해주세요🥲");
+                }
               }}
             />
           )}
@@ -152,4 +166,5 @@ const HoverIcons = styled.div`
   right: 15px;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 `;
