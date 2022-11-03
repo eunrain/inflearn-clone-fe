@@ -31,6 +31,7 @@ const PostCard = ({ post }) => {
           {heart ? (
             <BsSuitHeartFill
               color="rgb(255, 56, 92)"
+
               size="28"
               onClick={() => {
                 setHeart(false);
@@ -62,7 +63,7 @@ const PostCard = ({ post }) => {
                 dispatch(__postCart(post.postId));
               }}
             />
-          )}
+          )} */}
         </HoverIcons>
       </StPostCard2>
       <StPostCard1>
