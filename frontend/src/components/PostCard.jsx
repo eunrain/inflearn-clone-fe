@@ -63,7 +63,7 @@ const PostCard = ({ post }) => {
         <Img src={post.thumbnail}></Img>
         <Title>{post.title}</Title>
         <Name>{post.tutor}</Name>
-        <Price>{post.price}</Price>
+        <Price>{Number(post.price).toLocaleString("kr")}</Price>
       </StPostCard1>
     </Container>
   );
