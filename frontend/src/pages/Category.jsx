@@ -21,7 +21,7 @@ const Category = () => {
   }, [dispatch, id]);
 
   const { data } = useSelector((state) => state.category);
-  const { stacklist } = useSelector((state) => state.post);
+  const { stack } = useSelector((state) => state.post);
 
   const [inquiry, setInquiry] = useState(false);
 
@@ -31,7 +31,7 @@ const Category = () => {
         <Sidebar />
         <Content>
           <Tag>
-            {stacklist?.map((stack) => (
+            {stack?.map((stack) => (
               <TagBtn key={stack} stack={stack} id={id} />
             ))}
           </Tag>

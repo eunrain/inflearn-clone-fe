@@ -76,7 +76,7 @@ const Bucket = () => {
                     ></input>
                     <button>삭제</button>
                   </div>
-                  <img src={data.thumbnail}></img>
+                  <img alt="강의 사진" src={data.thumbnail}></img>
                   <Title>{data.title}</Title>
                   <div>{data.price}</div>
                 </Content>

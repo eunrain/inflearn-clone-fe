@@ -11,9 +11,6 @@ const Header = () => {
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
 
-  const openModal = () => {
-    setModal(true);
-  };
   const closeModal = () => {
     setModal(false);
   };
@@ -82,6 +79,10 @@ const StMenu = styled.div`
 
   div {
     margin: auto;
+    :hover {
+      color: #1dc078;
+      cursor: pointer;
+    }
   }
 `;
 const StLogo = styled.img`
