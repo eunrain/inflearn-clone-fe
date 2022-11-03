@@ -25,7 +25,7 @@ const PostCard = ({ post }) => {
           {post.isHeart === true ? (
             <BsSuitHeartFill
               color="rgb(255, 56, 92)"
-              size="28"
+              size="20"
               onClick={() => {
                 setHeart(false);
                 dispatch(__postHeart(post.postId));
@@ -33,7 +33,7 @@ const PostCard = ({ post }) => {
             />
           ) : (
             <BsSuitHeart
-              size="28"
+              size="20"
               onClick={() => {
                 setHeart(true);
                 dispatch(__postHeart(post.postId));
@@ -42,7 +42,7 @@ const PostCard = ({ post }) => {
           )}
           {post.isCart === true ? (
             <BsCartXFill
-              size="30"
+              size="22"
               onClick={() => {
                 setCart(false);
                 dispatch(__postCart(post.postId));
@@ -50,7 +50,7 @@ const PostCard = ({ post }) => {
             />
           ) : (
             <BsCartPlus
-              size="30"
+              size="22"
               onClick={() => {
                 setCart(true);
                 dispatch(__postCart(post.postId));
@@ -73,42 +73,42 @@ export default PostCard;
 
 const Container = styled.div``;
 const StPostCard1 = styled.div`
-  width: 290px;
-  height: 390px;
+  width: 200px;
+  height: 250px;
   margin-bottom: 40px;
 `;
 
 const Img = styled.img`
-  width: 290px;
-  height: 180px;
+  width: 200px;
+  height: 120px;
 `;
 
 const Title = styled.div`
-  width: 290px;
-  height: 80px;
-  font-size: 20px;
+  width: 200px;
+  height: 30px;
+  font-size: 13px;
   font-weight: 600;
 `;
 
 const Name = styled.div`
-  width: 290px;
-  height: 55px;
-  font-size: 17px;
-  margin-top: 10px;
+  width: 200px;
+  height: 20px;
+  font-size: 13px;
+  margin-top: 30px;
 `;
 
 const Price = styled.div`
-  width: 290px;
+  width: 200px;
   height: 55px;
-  font-size: 17px;
+  font-size: 13px;
 `;
 
 // PostCard After
 
 const StPostCard2 = styled.div`
   position: relative;
-  width: 290px;
-  height: 390px;
+  width: 200px;
+  height: 250px;
   border: 1px solid;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.8);
@@ -123,33 +123,32 @@ const HoverContent = styled.div`
   margin: auto;
 `;
 const HoverTitle = styled.div`
-  width: 290px;
-  height: 80px;
-  font-size: 18px;
+  width: 180px;
+  height: 30px;
+  font-size: 11px;
   font-weight: 600;
-  line-height: 25px;
+  text-align: center;
+  margin: 10px auto;
 `;
 
 const HoverDescrip = styled.div`
-  width: 290px;
-  max-height: 200px;
-  white-space: normal;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  -webkit-line-clamp: 8;
-  -webkit-box-orient: vertical;
+  width: 180px;
+  height: 70px;
+  margin: 15px auto;
+  font-size: 11px;
 `;
 
 const HoverTag = styled.div`
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
   width: 290px;
-  height: 55px;
-  margin-top: 10px;
   color: skyblue;
 `;
 
 const HoverIcons = styled.div`
   position: absolute;
+  bottom: 10px;
   right: 15px;
   display: flex;
   flex-direction: column;
