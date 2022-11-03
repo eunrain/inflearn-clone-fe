@@ -27,33 +27,41 @@ const Category = () => {
 
   return (
     <Layout>
-      <Container>
+      <OutWrap>
         <Sidebar />
-        <Content>
-          <Tag>
-            {stack?.map((stack) => (
-              <TagBtn key={stack} stack={stack} id={id} />
-            ))}
-          </Tag>
-          <PostBox>
-            {data?.map((post) => (
-              <PostCard key={post.postId} post={post} />
-            ))}
-          </PostBox>
-        </Content>
-        <InquiryBtn setInquiry={setInquiry} />
-        {inquiry ? <Chat1 setInquiry={setInquiry} /> : null}
-      </Container>
+        <Container>
+          <Content>
+            <Tag>
+              {stack?.map((stack) => (
+                <TagBtn key={stack} stack={stack} id={id} />
+              ))}
+            </Tag>
+            <PostBox>
+              {data?.map((post) => (
+                <PostCard key={post.postId} post={post} />
+              ))}
+            </PostBox>
+          </Content>
+          <InquiryBtn setInquiry={setInquiry} />
+          {inquiry ? <Chat1 setInquiry={setInquiry} /> : null}
+        </Container>
+      </OutWrap>
     </Layout>
   );
 };
 
 export default Category;
 
-const Container = styled.div`
-  width: 1200px;
+const OutWrap = styled.div`
   display: flex;
-  margin: 40px auto;
+  width: 100%;
+  justify-content: center;
+  margin-top: 50px;
+`;
+
+const Container = styled.div`
+  width: 900px;
+  display: flex;
 `;
 
 const Content = styled.div`
@@ -65,7 +73,7 @@ const Tag = styled.div`
   display: flex;
   justify-content: left;
   margin-left: 18px;
-  margin: 0 0 20px 18px;
+  margin: 0 0 20px 0;
 `;
 
 const PostBox = styled.div`
