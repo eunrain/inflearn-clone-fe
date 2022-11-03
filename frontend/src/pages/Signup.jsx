@@ -6,8 +6,10 @@ import styled from "styled-components";
 import Layout from "../components/common/Layout";
 import { useDispatch } from "react-redux";
 import { __idDupCheck, __signUp } from "../redux/modules/signupSlice";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const schema = yup.object().shape({
     id: yup
       .string()
@@ -48,7 +50,7 @@ const Signup = () => {
       password: data.password,
     };
     dispatch(__signUp(signupBody));
-    console.log(JSON.stringify(signupBody));
+    navigate("/");
   };
 
   //중복확인
