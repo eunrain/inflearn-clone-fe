@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import {
   BsSuitHeartFill,
@@ -12,9 +12,6 @@ import { __postCart } from "../redux/modules/cartSlice";
 
 const PostCard = ({ post }) => {
   const dispatch = useDispatch();
-  const [heart, setHeart] = useState(false);
-  const [cart, setCart] = useState(false);
-
   const token = localStorage.getItem("token");
 
   return (

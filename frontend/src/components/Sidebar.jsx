@@ -16,6 +16,7 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
 const StLinkTitle = styled(Link)`
   display: block;
   text-align: center;

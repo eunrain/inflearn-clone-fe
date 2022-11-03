@@ -11,7 +11,6 @@ import Chat1 from "../components/chat/Chat1";
 
 const Main = () => {
   const { data, stack } = useSelector((state) => state.post);
-  console.log(data);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(__getPostCard());

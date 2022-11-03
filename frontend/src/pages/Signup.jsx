@@ -55,7 +55,6 @@ const Signup = () => {
 
   //중복확인
   const id = watch().id;
-  console.log(id);
 
   return (
     <Layout>

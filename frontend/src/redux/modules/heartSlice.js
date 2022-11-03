@@ -23,7 +23,6 @@ export const __postHeart = createAsyncThunk(
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.error);
@@ -40,7 +39,6 @@ export const __getHeart = createAsyncThunk(
       const { data } = await axios.get(`${url}/users/likes`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.error);
@@ -62,7 +60,6 @@ const heartSlice = createSlice({
     },
     [__getHeart.fulfilled]: (state, action) => {
       state.data = action.payload;
-      console.log(state.data);
     },
     [__getHeart.rejected]: (state, action) => {
       state.isLoading = true;

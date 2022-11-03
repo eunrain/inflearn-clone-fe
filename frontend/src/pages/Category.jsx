@@ -12,7 +12,6 @@ import Chat1 from "../components/chat/Chat1";
 
 const Category = () => {
   const { id } = useParams();
-  console.log(id);
 
   const dispatch = useDispatch();
 

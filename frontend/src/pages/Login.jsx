@@ -25,7 +25,6 @@ const Login = () => {
   });
   const dispatch = useDispatch();
   const submitForm = (data) => {
-    console.log(data);
     const loginBody = {
       loginId: data.id,
       password: data.password,
@@ -36,8 +35,6 @@ const Login = () => {
         window.location.reload();
       }
     });
-
-    console.log(JSON.stringify(loginBody));
   };
 
   return (

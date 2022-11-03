@@ -25,7 +25,6 @@ function Modal(props) {
   });
   const dispatch = useDispatch();
   const submitForm = (data) => {
-    console.log(data);
     const loginBody = {
       loginId: data.id,
       password: data.password,
