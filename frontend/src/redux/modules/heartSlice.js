@@ -3,7 +3,6 @@ import axios from "axios";
 
 const initialState = {
   data: [],
-  likes: [],
   isLoading: false,
   error: null,
   message: "",

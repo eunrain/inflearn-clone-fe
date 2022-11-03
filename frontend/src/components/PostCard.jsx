@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import {
   BsSuitHeartFill,
@@ -6,7 +6,7 @@ import {
   BsCartPlus,
   BsCartXFill,
 } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { __postHeart } from "../redux/modules/heartSlice";
 import { __postCart } from "../redux/modules/cartSlice";
 
@@ -14,11 +14,6 @@ const PostCard = ({ post }) => {
   const dispatch = useDispatch();
   const [heart, setHeart] = useState(false);
   const [cart, setCart] = useState(false);
-  // const { likes } = useSelector((state) => state.post);
-  // console.log(likes);
-  // const { buckets } = useSelector((state) => state.post);
-
-  // const [currentLikes, setCurrentLikes] = useState(likes);
 
   return (
     <Container>
@@ -27,11 +22,9 @@ const PostCard = ({ post }) => {
         <HoverDescrip>{post.description}</HoverDescrip>
         <HoverTag>{post.stack}</HoverTag>
         <HoverIcons>
-          {post.isHeart ? <BsSuitHeartFill /> : <BsSuitHeart />}
-          {heart ? (
+          {post.isHeart === true ? (
             <BsSuitHeartFill
               color="rgb(255, 56, 92)"
-
               size="28"
               onClick={() => {
                 setHeart(false);
@@ -47,7 +40,7 @@ const PostCard = ({ post }) => {
               }}
             />
           )}
-          {cart || post.isCart === true ? (
+          {post.isCart === true ? (
             <BsCartXFill
               size="30"
               onClick={() => {
@@ -63,7 +56,7 @@ const PostCard = ({ post }) => {
                 dispatch(__postCart(post.postId));
               }}
             />
-          )} */}
+          )}
         </HoverIcons>
       </StPostCard2>
       <StPostCard1>

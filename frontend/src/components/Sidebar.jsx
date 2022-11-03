@@ -42,9 +42,10 @@ const StLinkEnd = styled(Link)`
 `;
 
 const StContainer = styled.div`
+  height: 100vh;
   display: flex;
   justify-content: start;
-  margin: 50px auto;
+  margin: 50px 0 0 60px;
 `;
 
 const StWrap = styled.div`
