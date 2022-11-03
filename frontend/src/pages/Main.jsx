@@ -20,21 +20,23 @@ const Main = () => {
 
   return (
     <Layout>
-      <Container>
+      <OutWrap>
         <Sidebar />
-        <Content>
-          <Tag>
-            {stack?.map((stack) => (
-              <TagBtn key={stack} stack={stack} />
-            ))}
-          </Tag>
-          <PostBox>
-            {data?.map((post) => (
-              <PostCard key={post.postId} post={post} />
-            ))}
-          </PostBox>
-        </Content>
-      </Container>
+        <Container>
+          <Content>
+            <Tag>
+              {stack?.map((stack) => (
+                <TagBtn key={stack} stack={stack} />
+              ))}
+            </Tag>
+            <PostBox>
+              {data?.map((post) => (
+                <PostCard key={post.postId} post={post} />
+              ))}
+            </PostBox>
+          </Content>
+        </Container>
+      </OutWrap>
       <InquiryBtn setInquiry={setInquiry} />
       {inquiry ? <Chat1 setInquiry={setInquiry} /> : null}
     </Layout>
@@ -43,10 +45,16 @@ const Main = () => {
 
 export default Main;
 
-const Container = styled.div`
-  width: 1200px;
+const OutWrap = styled.div`
   display: flex;
-  margin: 40px auto;
+  width: 100%;
+  justify-content: center;
+  margin-top: 50px;
+`;
+
+const Container = styled.div`
+  width: 900px;
+  display: flex;
 `;
 
 const Content = styled.div`
