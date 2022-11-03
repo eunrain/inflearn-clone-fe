@@ -58,7 +58,7 @@ const signupSlice = createSlice({
       alert(action.payload);
     },
     [__idDupCheck.rejected]: (state, action) => {
-      alert(action.error);
+      alert(action.payload);
     },
   },
 });
