@@ -6,7 +6,6 @@ import { __getHeart } from "../redux/modules/heartSlice";
 import { __getCart } from "../redux/modules/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Likebar from "../components/Likebar";
-import { useSelector } from "react-redux";
 
 const Bucket = () => {
   const { data } = useSelector((state) => state.cart);
@@ -14,6 +13,7 @@ const Bucket = () => {
 
   useEffect(() => {
     dispatch(__getCart());
+    dispatch(__getHeart());
   }, []);
 
   // 체크된 아이템을 담을 배열
@@ -35,7 +35,7 @@ const Bucket = () => {
     if (checked) {
       // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
       const idArray = [];
-      data.forEach((el) => idArray.push(el.id));
+      data.forEach((el) => idArray.push(el.postId));
       setCheckItems(idArray);
     } else {
       // 전체 선택 해제 시 checkItems 를 빈 배열로 상태 업데이트
@@ -62,11 +62,10 @@ const Bucket = () => {
               <span>전체선택</span>
             </CheckBox>
             <ClassList>
-              {data?.map((data, key) => (
-                <Content>
+              {data?.map((data) => (
+                <Content key={data.postId}>
                   <div>
                     <input
-                      key={key}
                       type="checkbox"
                       name={`select-${data.postId}`}
                       onChange={(e) =>

@@ -5,11 +5,10 @@ import { __getCategory } from "../redux/modules/categorySlice";
 import Layout from "../components/common/Layout";
 import Sidebar from "../components/Sidebar";
 import PostCard from "../components/PostCard";
-import green from "../img/inflearn_green.png";
 import styled from "styled-components";
 import TagBtn from "../components/common/TagBtn";
 import InquiryBtn from "../components/common/InquiryBtn";
-import Chat1 from "../components/Chat1";
+import Chat1 from "../components/chat/Chat1";
 
 const Category = () => {
   const { id } = useParams();
@@ -22,7 +21,8 @@ const Category = () => {
   }, [dispatch, id]);
 
   const { data } = useSelector((state) => state.category);
-  console.log(data);
+  const { stacklist } = useSelector((state) => state.post);
+
   const [inquiry, setInquiry] = useState(false);
 
   return (
@@ -31,8 +31,8 @@ const Category = () => {
         <Sidebar />
         <Content>
           <Tag>
-            {data?.map((post) => (
-              <TagBtn key={post.postId} post={post} id={id} />
+            {stacklist?.map((stack) => (
+              <TagBtn key={stack} stack={stack} id={id} />
             ))}
           </Tag>
           <PostBox>
