@@ -49,7 +49,7 @@ const Bucket = () => {
     <Layout>
       <StWrap>
         <Container>
-          <h2>{loginId}님의 수강바구니</h2>
+          <Add>{loginId}님의 수강바구니</Add>
           <Wrap>
             <CheckBox>
               <input
@@ -97,16 +97,16 @@ export default Bucket;
 const Container = styled.div`
   width: 900px;
   margin: 0 auto;
+`;
 
-  h2 {
-    margin-top: 50px;
-    width: 200px;
-    height: 30px;
-    line-height: 30px;
-    border-bottom: 2px dotted #00c471;
-    font-size: 20px;
-    font-weight: 600;
-  }
+const Add = styled.span`
+  position: absolute;
+  height: 30px;
+  line-height: 30px;
+  border-bottom: 2px dotted #00c471;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 50px;
 `;
 
 const StWrap = styled.div`
@@ -119,7 +119,7 @@ const BarWrap = styled.div`
   margin: 50px 0 0 50px;
 `;
 const Wrap = styled.div`
-  margin-top: 50px;
+  margin-top: 120px;
 `;
 const ClassList = styled.div`
   button {
