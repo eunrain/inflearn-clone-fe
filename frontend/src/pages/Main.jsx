@@ -46,13 +46,13 @@ const Main = () => {
 export default Main;
 
 const Container = styled.div`
-  width: 1500px;
+  width: 1200px;
   display: flex;
   margin: 40px auto;
 `;
 
 const Content = styled.div`
-  width: 1300px;
+  width: 1200px;
   margin: 50px auto;
 `;
 

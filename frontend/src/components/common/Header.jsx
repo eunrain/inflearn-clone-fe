@@ -11,9 +11,6 @@ const Header = () => {
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
 
-  const openModal = () => {
-    setModal(true);
-  };
   const closeModal = () => {
     setModal(false);
   };
@@ -33,7 +30,13 @@ const Header = () => {
     <div>
       <StHeader>
         <StLogo art="헤더 로고" src={logo} onClick={() => navigate("/")} />
-
+        <StMenu>
+          <div>강의</div>
+          <div>로드맵</div>
+          <div>멘토링</div>
+          <div>커뮤니티</div>
+          <div>인프런</div>
+        </StMenu>
         <div>
           {!loginId ? (
             <StBtnWrap>
@@ -46,9 +49,9 @@ const Header = () => {
               <div>{loginId}님 환영합니다!</div>
               <StBtn>
                 <BucketBtn>
-                  <BsCart3 size="35" onClick={() => navigate("/bucket")} />
+                  <BsCart3 size="30" onClick={() => navigate("/bucket")} />
                 </BucketBtn>
-                <IoLogOutOutline size="35" onClick={() => onLogout()} />
+                <IoLogOutOutline size="30" onClick={() => onLogout()} />
               </StBtn>
             </StBtnWrap>
           )}
@@ -67,6 +70,21 @@ const StHeader = styled.div`
   box-shadow: 0px 13px 12px -15px #eeeeef;
 `;
 
+const StMenu = styled.div`
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  width: 500px;
+  margin: 10px 300px 0 0;
+
+  div {
+    margin: auto;
+    :hover {
+      color: #1dc078;
+      cursor: pointer;
+    }
+  }
+`;
 const StLogo = styled.img`
   margin: 10px 0 0 50px;
   width: 200px;

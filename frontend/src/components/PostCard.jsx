@@ -24,7 +24,7 @@ const PostCard = ({ post }) => {
         <HoverDescrip>{post.description}</HoverDescrip>
         <HoverTag>{post.stack}</HoverTag>
         <HoverIcons>
-          {likes.indexOf(post.postId) === -1 ? (
+          {/* {likes.indexOf(post.postId) === -1 ? (
             <BsSuitHeart
               size="28"
               onClick={() => {
@@ -56,7 +56,7 @@ const PostCard = ({ post }) => {
                 dispatch(__postCart(post.postId));
               }}
             />
-          )}
+          )} */}
         </HoverIcons>
       </StPostCard2>
       <StPostCard1>

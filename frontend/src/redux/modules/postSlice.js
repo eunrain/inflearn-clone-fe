@@ -35,7 +35,7 @@ const postSlice = createSlice({
     // 메인페이지 포스트 카드 get
     [__getPostCard.fulfilled]: (state, action) => {
       console.log(action.payload);
-      state.data = action.payload.data;
+      state.data = action.payload.postdata;
       state.likes = action.payload.likes;
       state.buckets = action.payload.buckets;
       state.stacklist = action.payload.stacklist;
