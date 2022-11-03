@@ -15,7 +15,6 @@ export const __postCart = createAsyncThunk(
   "postcart",
   async (payload, thunkAPI) => {
     const token = localStorage.getItem("token");
-    console.log(payload);
     try {
       const { data } = await axios.post(
         `${url}/feature/buckets/${payload}`,
@@ -24,10 +23,8 @@ export const __postCart = createAsyncThunk(
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
-      console.log(error.response.data.error);
       return thunkAPI.rejectWithValue(error.response.data.error);
     }
   }
@@ -44,7 +41,6 @@ export const __getCart = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -65,7 +61,6 @@ const cartSlice = createSlice({
     },
     [__getCart.fulfilled]: (state, action) => {
       state.data = action.payload;
-      console.log(state.data);
     },
     [__getCart.rejected]: (state, action) => {
       alert(action.payload);

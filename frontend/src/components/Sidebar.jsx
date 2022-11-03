@@ -49,6 +49,7 @@ const StLinkTitle = styled(Link)`
     border-radius: 15px;
   }
 `;
+
 const StLink = styled(Link)`
   display: block;
   text-align: center;
