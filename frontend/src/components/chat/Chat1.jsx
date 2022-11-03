@@ -59,6 +59,9 @@ const Button = styled.button`
   font-size: 19px;
   cursor: pointer;
   background-color: #0000000d;
+  :hover {
+    background-color: #00000014;
+  }
 `;
 
 const StContainer = styled.div`
