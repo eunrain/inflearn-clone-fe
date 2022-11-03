@@ -35,7 +35,7 @@ const Header = () => {
       <StHeader>
         <StLogo art="헤더 로고" src={logo} onClick={() => navigate("/")} />
         <StMenu>
-          <div>강의</div>
+          <div onClick={moveHandler}>강의</div>
           <div>로드맵</div>
           <div>멘토링</div>
           <div>커뮤니티</div>

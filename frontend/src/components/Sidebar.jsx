@@ -16,6 +16,22 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
+const StContainer = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content: start;
+  margin-top: 50px;
+`;
+
+const StWrap = styled.div`
+  width: 200px;
+  height: 300px;
+  border: 1px solid #e4e4e4;
+  background-color: #fafafa;
+  border-radius: 15px;
+`;
+
 const StLinkTitle = styled(Link)`
   display: block;
   text-align: center;
@@ -23,6 +39,15 @@ const StLinkTitle = styled(Link)`
   border-bottom: 1px solid #e4e4e4;
   font-size: 20px;
   text-decoration-line: none;
+
+  &:visited {
+    color: black;
+  }
+  &:hover {
+    background-color: #00c471;
+    color: whitesmoke;
+    border-radius: 15px;
+  }
 `;
 const StLink = styled(Link)`
   display: block;
@@ -31,6 +56,15 @@ const StLink = styled(Link)`
   font-size: 20px;
   border-bottom: 1px solid #e4e4e4;
   text-decoration-line: none;
+
+  &:visited {
+    color: black;
+  }
+  &:hover {
+    background-color: #00c471;
+    color: whitesmoke;
+    border-radius: 15px;
+  }
 `;
 
 const StLinkEnd = styled(Link)`
@@ -39,18 +73,13 @@ const StLinkEnd = styled(Link)`
   padding: 25px 0;
   font-size: 20px;
   text-decoration: none;
-`;
 
-const StContainer = styled.div`
-  height: 100vh;
-  display: flex;
-  justify-content: start;
-  margin: 50px 0 0 60px;
-`;
-
-const StWrap = styled.div`
-  width: 150px;
-  height: 300px;
-  border: 1px solid #e4e4e4;
-  background-color: #fafafa;
+  &:visited {
+    color: black;
+  }
+  &:hover {
+    background-color: #00c471;
+    color: whitesmoke;
+    border-radius: 15px;
+  }
 `;
